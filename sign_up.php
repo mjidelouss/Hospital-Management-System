@@ -1,6 +1,6 @@
-<?php
+<!-- <?php
 include 'scripts.php';
-?>
+?> -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,10 +21,10 @@ include 'scripts.php';
 <body style="background-color: #eee;">
    
    <section >
-       <div class="container vh-100">
-         <div class="row d-flex justify-content-center align-items-center h-100">
+       <div class="container py-5 h-100">
+         <div class="row justify-content-center align-items-center">
            <div class="col-lg-12 col-xl-11">
-             <div class="card text-black" style=" border-radius: 10px;">
+             <div class="card text-black" style=" border-radius: 10px; height: 690px;">
                <div class="card-body p-md-5">
                  <div class="row justify-content-center">
                    <div class=" col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
