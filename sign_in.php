@@ -38,7 +38,7 @@ include 'scripts.php';
                 <!-- To show errors is user put wrong data -->
 
                  <div class=" mb-4">
-                 <i class="fas fa-envelope fa me-2 fa-fw pt-4"></i>
+                 <i class="fa fa-address-card fa me-2 fa-fw pt-4"></i>
                  <label class="form-label fw-bold" for="Logemail ">Email address :</label>
                    <input type="email" id="Logemail" name="email" class="form-control form-control"  />
                  </div>

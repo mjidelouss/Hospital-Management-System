@@ -64,7 +64,7 @@ include 'scripts.php';
                                     </div>
 
                                     <div class=" mb-4">
-                                        <i class="fas fa-envelope fa me-2 fa-fw pt-4"></i>
+                                        <i class="fa fa-address-card fa me-2 fa-fw pt-4"></i>
                                         <label class="form-label fw-bold" for="CIN ">CIN :</label>
                                           <input type="CIN" id="CIN" name="CIN" class="form-control form-control"  />
                                         </div>
