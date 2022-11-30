@@ -1,52 +1,17 @@
-#landing-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+body{
+  background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.4)) ,url(../img/bg01.jpg);
+  background-size: cover;
+  background-attachment: fixed;
 }
-
-#landing-section {
-  margin: auto;
+main{
+  margin-top: 100px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
-.mainhead {
-  background-color: #f8f9fa;
-  padding-top: 9.5rem;
-  padding-bottom: 5rem;
+main h1{
+  font-size: 40px;
 }
-
-#mainNav {
-  background-color: #fff;
-}
-
-h1 {
-  font-weight: 600;
-  line-height: 1.2;
-  font-family: "Newsreader";
-}
-
-p {
-  font-family: "Mulish";
-}
-
-.landing-img {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.navbar-title {
-  font-size: 0.8rem;
-  text-decoration: none;
-}
-
-.navbar-title:hover {
-  color: rgba(95, 37, 219, 0.9);
-}
-
-.nav-item {
-  font-size: 0.8rem;
-  margin-top: 1rem;
-}
-
-.foot-item {
-  text-decoration: none;
+p{
+  color: #B4B6B9;
 }
