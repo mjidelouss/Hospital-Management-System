@@ -49,7 +49,7 @@
             <div class="container-fluid px-4">
                 <div class="row g-3 my-2">
                     <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="p-2 bg-light d-flex justify-content-around align-items-center rounded border border-secondary">
+                        <div class="p-2 bg-white d-flex justify-content-around align-items-center rounded border border-secondary">
                             <div>
                                 <h5 class="fs-2">23</h5>
                                 <p class="fs-5">Doctors</p>
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="p-2 bg-light d-flex justify-content-around align-items-center rounded border border-secondary">
+                        <div class="p-2 bg-white d-flex justify-content-around align-items-center rounded border border-secondary">
                             <div>
                                 <h5 class="fs-2">12</h5>
                                 <p class="fs-5">New Booking</p>
@@ -76,7 +76,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="p-2 bg-light d-flex justify-content-around align-items-center rounded border border-secondary">
+                        <div class="p-2 bg-white d-flex justify-content-around align-items-center rounded border border-secondary">
                             <div>
                             <h5 class="fs-2">9</h5>
                             <p class="fs-5">Today Sessions</p>
