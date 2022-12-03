@@ -31,10 +31,10 @@
                     <hr>
                         <div class="list-group-flush ms-3 list-group">
                             <a href="admin.html" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> Doctors</a>
-                            <a href="#" class="list-group-item bg-transparent text-blue-500 border-3 border-blue border-end "><img src="../assets/img/icons/schedule-hover.svg" alt=""> Schedule</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> Appointment</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt=""> Patient</a>
+                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt="">My Appointment</a>
+                            <a href="#" class="list-group-item bg-transparent text-blue-500 border-3 border-blue border-end "><img src="../assets/img/icons/session-iceblue.svg" alt=""> My Session</a>
+                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt="">My Patients</a>
+                            <a href="#" class="list-group-item bg-transparent "><img src="../assets/img/icons/settings.svg" alt=""> Settings</a>
                         </div>
                 </div>
             <!-- Page Content -->
@@ -77,9 +77,8 @@
 
                 </div>
             </nav>
-            <h5 class="fw-bold ms-4 d-inline-block">Schedule a Session</h5> <a class=" list-group-item  p-2 rounded-1 shadow  d-inline-block bg-blue-500 fs-5 fw-800 text-light "> <img src=" ../assets/icon/add.svg" > Add a Session </a>
             <div class="container-fluid px-4">
-                <h4> All Session </h4>
+                <h4> My Session (8) </h4>
                 <div class=" d-flex p-2 border rounded-1 justify-content-around" >
                     <div class=" row" style=" flex-basis:20rem ;">
                          <label for="date" class="d-flex justify-content-center align-items-center col-4 fs-6 fw-600 fw-600"> Date: </label>
@@ -95,10 +94,10 @@
                             
                             </select>
                     </div>
-                    <div class=" d-flex bg-blue-100 rounded-1 " >
+                    <div class=" d-flex bg-blue-100 rounded-1 " style=" flex-basis:20rem ;">
                         <img src="../assets/icon/filter-iceblue.svg" alt="" srcset="">
                         <div class=" p-3 ">
-                             <p class=" m-0 fs-5 fw-600 text-blue-600 ">Filter</p>
+                             <p class=" m-0 fs-5 fw-600 text-blue-600 ms-3 ">Filter</p>
                         </div>
                        
                     </div>
@@ -112,18 +111,17 @@
                     <thead class=" ">
                         <tr class="border-bottom border-blue " >
                         <th scope="col" >Session Title</th>
-                        <th scope="col"  >Doctor</th>
-                        <th scope="col"   >Schedule Date & Time </th>
+                        <th scope="col" >Schedule Date & Time </th>
                         <th scope="col">Max num that can be booked</th>
                         <th scope="col">Events</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="" >1</th>
+                            <th scope="" class="" >marck</th>
                             <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                           
+                            <td>1</td>
                             <td class=" d-flex">
                                 <div class=" d-flex bg-blue-100 rounded-1 m-1  ">
                                     <img src="../assets/icon/view-iceblue.svg" alt="" srcset="">
@@ -135,26 +133,14 @@
                                 <div class=" d-flex bg-blue-100 rounded-1 m-1">
                                     <img src="../assets/icon/delete-iceblue.svg" alt="" srcset="">
                                     <div class=" p-2">
-                                         <p class=" m-0 fs-5 fw-600 text-blue-600">Remove</p>
+                                         <p class=" m-0 fs-5 fw-600 text-blue-600">Cancel Session</p>
                                     </div>
                                    
 
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                        </tr>
+                        
                        
                     </tbody>
                 </table>
