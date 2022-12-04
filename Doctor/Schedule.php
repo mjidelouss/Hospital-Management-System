@@ -48,16 +48,13 @@
                     </div>
                     <div class=" row bg-blue-100  rounded-1  p-2" >
                         <img src="../assets/icon/back-iceblue.svg" alt="" class="  col">
-                        <p class=" col align-items-center m-0 fw-800 fs-5 "> Back</p>
+                        <p class=" col align-items-center m-0 fw-800 fs-5 text-blue "> Back</p>
     
                     </div>
-    
-                   
-                    
-                </div> 
+                 </div> 
                 <div class=" p-1 ms-4 fs-4 fw-800  me-auto" >
                         
-                      <p class="my-0">Shedule Manager</p>  
+                      <p class="my-0">My Sessions</p>  
                         
                     </div>
 

@@ -48,7 +48,7 @@
                     </div>
                     <div class=" row bg-blue-100  rounded-1  p-2" >
                         <img src="../assets/icon/back-iceblue.svg" alt="" class="  col">
-                        <p class=" col align-items-center m-0 fw-800 fs-5 "> Back</p>
+                        <p class=" col align-items-center m-0 fw-800 fs-5 text-blue "> Back</p>
     
                     </div>
     
@@ -95,9 +95,9 @@
                             
                             </select>
                     </div>
-                    <div class=" d-flex bg-blue-100 rounded-1 " >
+                    <div class=" d-flex bg-blue-100 rounded-1 " style=" flex-basis:20rem ;" >
                         <img src="../assets/icon/filter-iceblue.svg" alt="" srcset="">
-                        <div class=" p-3 ">
+                        <div class=" p-3 " >
                              <p class=" m-0 fs-5 fw-600 text-blue-600 ">Filter</p>
                         </div>
                        
