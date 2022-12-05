@@ -13,5 +13,3 @@ class DbConnection {
         return $pdo;
     }
 }
-$sql = "";
-$sql->connect()->$pdo;
