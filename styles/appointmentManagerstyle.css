@@ -3,6 +3,9 @@
   margin-left: -16.5rem;
   background-color: #f1f2f3;
 }
+#date-bar {
+  width: 20rem;
+}
 .user_email {
   font-size: 11px;
 }
