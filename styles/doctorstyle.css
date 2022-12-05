@@ -3,6 +3,16 @@
   margin-left: -16.5rem;
   background-color: #f1f2f3;
 }
+#search-img {
+  position: absolute;
+  top: 6px;
+  left: 3px;
+  color: #9ca3af;
+}
+#search-bar {
+  width: 20rem;
+  text-indent: 1.4rem;
+}
 .user_email {
   font-size: 11px;
 }
