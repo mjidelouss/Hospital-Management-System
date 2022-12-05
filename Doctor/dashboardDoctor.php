@@ -34,9 +34,9 @@
             </div>
             <hr>
             <div class="list-group-flush ms-3 list-group">
-                <a href="admin.html" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg"
+                <a href="dashboardDoctor.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg"
                         alt=""> Dashboard</a>
-                <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> My
+                <a href="appointmentManager.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> My
                     appointment</a>
                 <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/session.svg" alt=""> My
                     sessions</a>
