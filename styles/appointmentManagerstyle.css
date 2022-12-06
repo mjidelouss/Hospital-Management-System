@@ -1,0 +1,40 @@
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -16.5rem;
+  background-color: #f1f2f3;
+}
+#date-bar {
+  width: 20rem;
+}
+.user_email {
+  font-size: 11px;
+}
+.para {
+  font-weight: 50px;
+}
+.list-group {
+  width: 15rem;
+}
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+.list-group-item {
+  border: none;
+  padding: 20px 30px;
+}
+#page-content-wrapper {
+  min-width: 100vw;
+  background-color: rgb(249, 249, 249);
+}
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -16.5rem;
+  }
+}
