@@ -115,12 +115,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Are you sure ?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" class="btn-close" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>You want to delete this record</p>
+        <p>You want to delete this record ?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger">Yes</button>

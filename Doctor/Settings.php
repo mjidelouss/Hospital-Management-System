@@ -95,7 +95,7 @@
                     <p>View Personal information About Your Account</p>
                 </div>
             </button>
-            <button class="list-group-item bg-transparent d-flex justify-content-start my-5" style="border:solid #6495ED 1px; border-radius:5px; width: 95%">
+            <button class="list-group-item bg-transparent d-flex justify-content-start my-5" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border:solid #6495ED 1px; border-radius:5px; width: 95%">
                 <img src="../assets/img/icons/delete-iceblue.svg" alt="" style="height: 5%; width: 5%">
                 <div class="mx-3 text-start">
                     <h4 class="text-danger"> Delete Account</h4>
@@ -107,6 +107,25 @@
     
             </div>
         </div>
+</div>
+
+<!-- Modal content goes here -->
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Are you sure ?</h5>
+        <button type="button" class="btn-close" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>You want to delete this record ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger">Yes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- ================== BEGIN core-js ================== -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
