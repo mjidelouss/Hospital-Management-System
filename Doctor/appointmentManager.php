@@ -85,7 +85,7 @@
                             </thead>
                             <tbody id="doctor-table">
                             <?php
-                             $appointment = new ;
+                            //  $appointment = new ;
                             ?>
 </div>
 <!-- ================== BEGIN core-js ================== -->
