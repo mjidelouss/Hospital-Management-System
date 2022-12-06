@@ -165,4 +165,5 @@
 </script>
 <script src="../scripts/scripts.js"></script>
 <!-- ================== END core-js ================== -->
+</body>
 </html>
