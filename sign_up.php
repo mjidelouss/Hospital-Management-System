@@ -78,7 +78,7 @@ include 'scripts.php';
                    
                                     <div class="pt-1 mb-4 row justify-content-between">
                                       <button class="btn btn-primary btn btn-block col-5 " type="submit"  name="register" >Register</button>
-                                      <button class="btn btn-primary btn btn-block col-5 " type="submit"  name="register" >Next</button>
+                                      <a class="btn btn-primary btn btn-block col-5 "  >Next</a>
                                     </div>
                         
                                     <p class="text-center">Already have an account? <a href="" class="fw-bold text-black  text-decoration-none">Log in</a></p>
