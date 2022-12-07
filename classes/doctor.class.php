@@ -31,3 +31,5 @@ class Doctor extends DbConnection{
         }
     }
 }
+
+
