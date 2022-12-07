@@ -1,12 +1,12 @@
 <?php 
 
 class DbConnection {
-    private $host = "localhost";
-    private $user = "root";
-    private $pwd = "";
-    private $dbName = "youcodehospitale";
+    public $host = "localhost";
+    public $user = "root";
+    public $pwd = "";
+    public $dbName = "youcodehospitale";
 
-    protected function connect() {
+    public function connect() {
        try{
 
            $dsn = 'mysql:host='.$this->host.';dbname='.$this->dbName;
