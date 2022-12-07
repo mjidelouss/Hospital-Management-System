@@ -63,7 +63,24 @@
                     <div class="me-4 mt-4 d-flex">
                         <div class="">
                             <p class="text-muted" style="margin-top: 0.3rem;">Today's Date</p>
-                            <h4 class="fw-bold" style="margin-top: -1rem;">2020-05-02</h4>
+                            <h4 class="fw-bold" style="margin-top: -1rem;">
+
+                            <?php 
+                                date_default_timezone_set('Africa/Morocco');
+        
+                                $today = date('Y-m-d');
+                                echo $today;
+
+
+                                $patientrow = $database->query("select  * from  patient;");
+                                $doctorrow = $database->query("select  * from  doctor;");
+                                $appointmentrow = $database->query("select  * from  appointment where appodate>='$today';");
+                                $schedulerow = $database->query("select  * from  schedule where scheduledate='$today';");
+
+
+                                ?>
+                        
+                            </h4>
                         </div>
                         <div><img class="rounded p-2 border border-secondary ms-2" src="../assets/img/calendar.svg"
                                 alt=""></div>
