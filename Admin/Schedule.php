@@ -1,3 +1,24 @@
+
+<?php 
+require_once('../includes/autoloader.php');
+
+function varDamp($param){
+
+    var_dump($param);
+
+}
+
+
+$doctors = new Schedule();
+
+varDamp($doctors->getAllDoctors());
+
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

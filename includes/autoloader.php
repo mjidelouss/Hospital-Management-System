@@ -6,12 +6,13 @@
     object is is instantiated(new Class). 
 */
 
-spl_autoload_register('myAutoLoader');
+    spl_autoload_register('myAutoLoader');
 
-function myAutoLoader($className) {
-    $path = "classes/";
-    $extension = ".class.php";
-    $fullPath = $path . $className . $extension;
+    function myAutoLoader($className){
 
-    include_once $fullPath;
-}
+        $path = "../classes/";
+        $extension = ".class.php";
+        $fullPath = $path . $className . $extension;
+
+        include_once $fullPath;
+    }

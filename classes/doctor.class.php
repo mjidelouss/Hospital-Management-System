@@ -1,6 +1,6 @@
 <?php
-include "autoloader.php";
 
+include "../includes/autoloader.php";
 class User {
     public $id;
     public $firstName;
@@ -15,3 +15,5 @@ class User {
         
     }
 }
+
+
