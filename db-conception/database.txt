@@ -1,0 +1,41 @@
+CREATE TABLE Patient(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    First_name VARCHAR(255),
+    Last_name VARCHAR(255),
+    Email VARCHAR(255),
+    PASSWORD VARCHAR(255),
+    Birth_date DATE,
+    Cin VARCHAR(255),
+    Phone_number INT
+);
+CREATE TABLE Doctor(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    First_name VARCHAR(255),
+    Last_name VARCHAR(255),
+    Email VARCHAR(255),
+    PASSWORD VARCHAR(255),
+    Speciality VARCHAR(255)
+);
+CREATE TABLE Admin(
+    First_name VARCHAR(255),
+    Last_name VARCHAR(255),
+    Email VARCHAR(255),
+    PASSWORD VARCHAR(255)
+);
+CREATE TABLE SESSION(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    Session_title VARCHAR(255),
+    Scheduled_date DATETIME,
+    max_number INT,
+    Doctor_id INT,
+    FOREIGN KEY(Doctor_id) REFERENCES Doctor(id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+CREATE TABLE Appointment(
+    Appointment_number INT PRIMARY KEY,
+    Appointment_date DATE,
+    Patient_id INT,
+    Doctor_id INT,
+    
+    FOREIGN KEY(Patient_id) REFERENCES Patient(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(Doctor_id) REFERENCES Doctor(id) ON UPDATE CASCADE ON DELETE CASCADE
+);
