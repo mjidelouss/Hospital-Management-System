@@ -24,9 +24,9 @@ include 'scripts.php';
        <div class="container py-5 h-100">
          <div class="row justify-content-center align-items-center">
            <div class="col-lg-12 col-xl-11">
-             <div class="card text-black" style=" border-radius: 10px; height: 690px;">
+             <div class="card text-black" style=" border-radius: 10px; height: 90%;">
                <div class="card-body p-md-5">
-                 <div class="row justify-content-center">
+                 <div class="row justify-content-center ">
                    <div class=" col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
      
                      <h1 class="text-center fw-bold mb-4 mx-1 mx-md-4 mt-4">Let's Get Started</h1>
@@ -42,7 +42,7 @@ include 'scripts.php';
                                 <div class="flex-fill mb-0">
                                     <i class="fas fa-user fa me-3 fa-fw pt-4 " ></i>
                                         <label class="form-label fw-bold" for="fname">First name:</label>
-                                        <input type="text" name="Firstname"  id="fname" class="form-control" /> 
+                                        <input type="text" name="Firstname"  id="fname" class="form-control form-control-sm" /> 
                                     </div>
 
                                     </div>
@@ -51,7 +51,7 @@ include 'scripts.php';
                                         <div class="flex-fill mb-0">
                                             <i class="fas fa-user fa me-3 fa-fw pt-4 "></i>
                                           <label class="form-label fw-bold" for="lname">Last name:</label>
-                                        <input type="text" name="Lastname" id="lname" class="form-control" />
+                                        <input type="text" name="Lastname" id="lname" class="form-control form-control-sm" />
                                         
                                     </div>
 
@@ -60,26 +60,50 @@ include 'scripts.php';
                                 <div class=" mb-4">
                                     <i class="fas fa-home fa me-2 fa-fw pt-4"></i>
                                     <label class="form-label fw-bold" for="address ">Address :</label>
-                                      <input type="text" id="address" name="address" class="form-control form-control"/>
+                                      <input type="text" id="address" name="address" class=" form-control form-control-sm"/>
                                     </div>
 
                                     <div class=" mb-4">
                                         <i class="fa fa-address-card fa me-2 fa-fw pt-4"></i>
                                         <label class="form-label fw-bold" for="CIN ">CIN :</label>
-                                          <input type="CIN" id="CIN" name="CIN" class="form-control form-control"  />
+                                          <input type="CIN" id="CIN" name="CIN" class=" form-control form-control-sm"  />
                                         </div>
                         
                                     <div class=" mb-4">
                                     <i class="fas fa-calendar fa me-2 fa-fw pt-4"></i>
                                     <label class="form-label fw-bold" for="date">date of Birth :</label>
-                                      <input type="date" id="lpassword" name="date" class="form-control form-control" />
+                                      <input type="date" id="lpassword" name="date" class=" form-control form-control-sm" />
                                       
                                     </div>
+
+                                        <div class=" mb-4">
+                                        <i class="fa fa-envelope me-2 fa-fw pt-4"></i>
+                                        <label class="form-label fw-bold" for="email "> Email :</label>
+                                          <input type="email" id="email" name="email" class=" form-control form-control-sm"  />
+                                        </div>
+
+                                        <div class=" mb-4">
+                                        <i class="fa fa-mobile fa me-2 fa-fw pt-4"></i>
+                                        <label class="form-label fw-bold" for="mobile">Mobile number :</label>
+                                          <input type="mobile" id="mobile" name="mobile" class=" form-control form-control-sm"  />
+                                        </div>
+
+                                        <div class=" mb-4">
+                                        <i class="fa fa-lock fa me-2 fa-fw pt-4"></i>
+                                        <label class="form-label fw-bold" for="password ">create New password :</label>
+                                          <input type="password" id="password" name="password" class=" form-control form-control-sm"  />
+                                        </div>
+
+                                        <div class=" mb-4">
+                                        <i class="fa fa-lock fa me-2 fa-fw pt-4"></i>
+                                        <label class="form-label fw-bold" for="rpassword ">Conform password :</label>
+                                          <input type="password" id="rpassword" name="rpassword" class="form-control form-control-sm"  />
+                                        </div>
+                        
+                        
                    
-                                    <div class="pt-1 mb-4 row justify-content-between">
-                                      <button class="btn btn-primary btn btn-block col-5 " type="submit"  name="register" >Register</button>
-                                      <a class="btn btn-primary btn btn-block col-5 "  >Next</a>
-                                    </div>
+                                      <button class="btn btn-primary btn btn-block container-fluid mb-3 " type="submit"  name="register" >Register</button>
+                                  
                         
                                     <p class="text-center">Already have an account? <a href="" class="fw-bold text-black  text-decoration-none">Log in</a></p>
 
