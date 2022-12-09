@@ -4,6 +4,7 @@ class DbConnection {
     public $host = "localhost";
     public $user = "root";
     public $pwd = "";
+
     public $dbName = "youcodehospital";
 
     public function connect() {
