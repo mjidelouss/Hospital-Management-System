@@ -11,7 +11,7 @@
 function myAutoLoader($className) {
     $path = "../classes/";
     $extension = ".class.php";
-    $fullPath = $path . $className . $extension;
+    $fullPath =   $className . $extension;
 
         include_once $fullPath;
     }

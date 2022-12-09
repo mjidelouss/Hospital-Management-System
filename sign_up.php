@@ -1,5 +1,24 @@
 <!-- <?php
+session_start();
 include 'scripts.php';
+require_once('classes/autoloader.php');
+
+
+
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+ 
+  $newpatient = new Patient();
+
+  echo "<pre>"."doctor  ";
+  var_dump(extract($_POST));
+  echo "</pre>";
+
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+
+}
+
 ?> -->
 
 <!DOCTYPE html>
@@ -31,6 +50,18 @@ include 'scripts.php';
      
                      <h1 class="text-center fw-bold mb-4 mx-1 mx-md-4 mt-4">Let's Get Started</h1>
                      <p class="text-center h6 text-muted mb-5 mx-1 mx-md-4 mt-4"> Add your personal details to continue </p>
+
+                      <!-- To show errors is user put wrong data -->
+                <?php if(isset($_SESSION['signup_error'])): ?>
+									<div class="alert alert-danger alert-dismissible fade show">
+										<strong>wrong!</strong>
+										<?php 
+									echo $_SESSION['signup_error'] ; 
+									
+										?>
+										<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+									</div>
+									<?php endif ?>
 
                    <form class="mx-1 mx-md-4" action="" method="post" >
       

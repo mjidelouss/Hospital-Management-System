@@ -1,27 +1,37 @@
-<?php 
+<?php
 
-class DbConnection {
+class DbConnection
+{
     private $host = "localhost";
     private $user = "root";
     private $pwd = "";
     private $dbName = "youcodehospitale";
 
-    protected function connect() {
-       try{
+    public PDO $pdo;
 
-           $dsn = 'mysql:host='.$this->host.';dbname='.$this->dbName;
-           $pdo = new PDO($dsn, $this->user, $this->pwd);
-           $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-           
-           return $pdo;
-        }
+    public function __construct()
+    {
+        try {
 
-        
-        
-        catch(PDOException $e){
+            $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbName;
+            $pdo = new PDO($dsn, $this->user, $this->pwd);
+            $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+            $this->pdo = $pdo;
+
+        } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
-          }
+        }
     }
+//    public function __destruct(){
+//        if($this->$pdo != NULL){
+//            $this->pdo->close();
+//        }
+
+
+
+
+
 }
 
 ?>
