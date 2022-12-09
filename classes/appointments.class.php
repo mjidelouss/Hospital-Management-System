@@ -2,7 +2,8 @@
 require_once('../includes/autoloader.php');
 
 class Appointments {
-
+    public $db;
+    
     public function __construct() {
       $this->db = new DbConnection;
     }
