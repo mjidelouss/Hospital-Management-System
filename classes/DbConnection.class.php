@@ -1,11 +1,11 @@
 <?php
 
-class DbConnection
-{
-    private $host = "localhost";
-    private $user = "root";
-    private $pwd = "";
-    private $dbName = "youcodehospitale";
+class DbConnection {
+    public $host = "localhost";
+    public $user = "root";
+    public $pwd = "";
+
+    public $dbName = "youcodehospital";
 
     public PDO $pdo;
 
