@@ -21,14 +21,14 @@ class Session extends DbConnection
     {
 
         $query = $this->pdo->prepare(" insert ... ");
-        $query->execute(array($email, $doctor->id));
+        // $query->execute(array($email, $doctor->id));
 
     }
     public function displaySession()
     {
 
         $query = $this->pdo->prepare(" insert ... ");
-        $query->execute(array($email, $this->doctor->id));
+        // $query->execute(array($email, $this->doctor->id));
 
 
     }
