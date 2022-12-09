@@ -12,8 +12,9 @@ class Admin {
     public function __construct() {
       $this->db = new DbConnection;
     }
-    public function createDoctor() {
-
+    public function createDoctor($firstName, $lastName, $email, $password, $speciality) {
+      $sql = "INSERT INTO doctor (First_name, Last_name, Speciality, Email, PASSWORD) values ('$firstName', '$lastName', '$speciality', '$email', '$password')";
+      $stmt = $this->db->connect()->query($sql);
     }
     public function deleteDoctor() {
         

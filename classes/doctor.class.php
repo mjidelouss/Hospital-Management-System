@@ -15,6 +15,13 @@ class Doctor {
     public function login() {
 
     }
+    public function countDoctors() {
+      $sql = "SELECT COUNT(*) FROM doctor";
+      $stmt = $this->db->connect()->query($sql);
+      $row = $stmt->fetch();
+      $docCount = $row['COUNT(*)'];
+      echo '<h5 class="fw-bold ms-4 mt-3">All Doctors ('.$docCount.')</h5>';
+    }
     public function searchDoctors($doc) {
       $sql="SELECT * FROM doctor WHERE First_name LIKE '%$doc%' OR email LIKE '%$doc%'";
       $stmt = $this->db->connect()->query($sql);
