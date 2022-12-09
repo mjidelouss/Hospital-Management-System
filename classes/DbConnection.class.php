@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class DbConnection {
     public $host = "localhost";
@@ -19,3 +19,9 @@ class DbConnection {
            }
      }
 }
+//    public function __destruct(){
+//        if($this->$pdo != NULL){
+//            $this->pdo->close();
+//        }
+}
+?>

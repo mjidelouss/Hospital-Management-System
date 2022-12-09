@@ -1,6 +1,25 @@
-<!-- <?php
-include 'scripts.php';
-?> -->
+ <?php
+
+ session_start();
+
+ require_once('classes/autoloader.php');
+ 
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+  $newuser = new User();
+
+  $email      = $_POST['email'];
+	$password   = $_POST['password'];
+  
+  $newuser->login($email,$password);
+
+
+}
+ 
+
+
+
+?> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,8 +43,8 @@ include 'scripts.php';
        <div class="container py-5 h-100">
          <div class="row justify-content-center align-items-center">
            <div class="col-lg-12 col-xl-9">
-             <div class="card text-black" style=" border-radius: 10px; height: 490px;">
-               <div class="card-body p-md-5">
+             <div class="card text-black" style=" border-radius: 10px; height: 590px;">
+               <div class="card-body p-md-5 h-100">
                  <div class="row justify-content-center">
                    <div class=" col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
      
@@ -33,9 +52,19 @@ include 'scripts.php';
                      <p class="text-center h6 text-muted mb-5 mx-1 mx-md-4 mt-4"> Login with your details to continue </p>
 
                    
-                     <form  method="post"  data-parsley-validate >
+                     <form  method="post" action="sign_in.php" data-parsley-validate >
 
                 <!-- To show errors is user put wrong data -->
+                <?php if(isset($_SESSION['login_error'])): ?>
+									<div class="alert alert-danger alert-dismissible fade show">
+										<strong>wrong!</strong>
+										<?php 
+									echo $_SESSION['login_error'] ; 
+									
+										?>
+										<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+									</div>
+									<?php endif ?>
 
                  <div class=" mb-4">
                  <i class="fa fa-address-card fa me-2 fa-fw pt-4"></i>
