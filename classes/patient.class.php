@@ -1,10 +1,15 @@
 <?php
-include "autoloader.php";
+require_once('../includes/autoloader.php');
 
-class Patient {
+class Patient{
     public $date;
     public $cin;
     public $phone;
+    public $db;
+
+    public function __construct() {
+      $this->db = new DbConnection;
+    }
 
     public function bookSession() {
 
