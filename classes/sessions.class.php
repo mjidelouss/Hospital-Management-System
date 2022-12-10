@@ -1,5 +1,5 @@
 <?php
-include "autoloader.php";
+require_once('../includes/autoloader.php');
 
 class Session extends DbConnection
 {
