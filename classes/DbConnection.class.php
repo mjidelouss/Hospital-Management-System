@@ -5,7 +5,7 @@ class DbConnection {
     public $user = "root";
     public $pwd = "";
 
-    public $dbName = "youcodehospital";
+    public $dbName = "youcodehospitale";
 
     public PDO $pdo;
 
