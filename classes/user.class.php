@@ -9,7 +9,11 @@ class User extends DbConnection
     public $lastName;
     public $email;
     public $password;
+    public $db;
 
+    public function __construct() {
+      $this->db = new DbConnection;
+    }
 
 
     public function login($email, $password)
