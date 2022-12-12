@@ -67,12 +67,8 @@
                </div>
             </div>
             <?php
-            $db = new DbConnection;
-            $sql = "SELECT COUNT(*) FROM appointment";
-            $stmt = $db->connect()->query($sql);
-            $row = $stmt->fetch();
-            $appointCount = $row['COUNT(*)'];
-            echo '<h5 class="fw-bold ms-4 mt-3">My Appointments ('.$appointCount.')</h5>';
+            $app = new Appointments;
+            $app->countAppointments();
             ?>
             <div class="container">
             <div class="mt-4 mb-4 border border-secondary rounded p-1">
@@ -100,7 +96,7 @@
                             </thead>
                             <tbody id="doctor-table">
                             <?php
-                            $appoint = new appointments;
+                            $appoint = new Appointments;
                             if (isset($_POST['searchDate'])) {
                                 $appointSearch = $_POST['searchAppoint'];
                                 $appoint->searchAppointment($appointSearch);

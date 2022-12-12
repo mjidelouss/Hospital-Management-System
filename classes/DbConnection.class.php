@@ -18,10 +18,7 @@ class DbConnection {
              echo "Error: " . $e->getMessage();
            }
      }
+    public function __destruct() {
+            $this->pdo = NULL;
+    }
 }
-//    public function __destruct(){
-//        if($this->$pdo != NULL){
-//            $this->pdo->close();
-//        }
-
-?>

@@ -82,12 +82,8 @@
             </button>
             </div>
             <?php
-            $db = new DbConnection;
-            $sql = "SELECT COUNT(*) FROM doctor";
-            $stmt = $db->connect()->query($sql);
-            $row = $stmt->fetch();
-            $docCount = $row['COUNT(*)'];
-            echo '<h5 class="fw-bold ms-4 mt-3">All Doctors ('.$docCount.')</h5>';
+            $doct = new Doctor;
+            $doct->countDoctors();
             ?>
             <div class="container">
             <div class="col table-responsive mt-3 rounded">
@@ -102,10 +98,18 @@
                             </thead>
                             <tbody id="doctor-table">
                             <?php
+                            if (isset($_POST['save']))
+                            {
+                                $admin = new Admin;
+                                $admin->createDoctor($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['speciality'], $_POST['pass']);
+                            }
                             $doc = new Doctor;
+                            if (isset($_POST['update']))
+                            {
+                                $doc->updateDoctor($_POST['docId'], $_POST['editFirstName'], $_POST['editLastName'], $_POST['editEmail'], $_POST['editPassword'], $_POST['editSpeciality']);
+                            }
                             if (isset($_POST['searchDoc'])) {
-                                $docSearch = $_POST['searchDoctor'];
-                                $doc->searchDoctors($docSearch);
+                                $doc->searchDoctors($_POST['searchDoctor']);
                             }
                             else
                             {
@@ -124,27 +128,23 @@
                 <div class="modal-body" style="background-color: #f1f2f3;">
                     <div class="" id="">
                         <label class="col-form-label text-black">First Name</label>
-                        <input type="text" class="form-control" id="" name="" required />
+                        <input type="text" class="form-control" id="firstName" name="firstName" required />
                 </div>
                 <div class="" id="">
                     <label class="col-form-label text-black">Last Name</label>
-                    <input type="text" class="form-control" id="" name="" required />
+                    <input type="text" class="form-control" id="lastName" name="lastName" required />
                 </div>
                 <div class="" id="">
                     <label class="col-form-label text-black">Email</label>
-                    <input type="text" class="form-control" id="" name="" required />
+                    <input type="email" class="form-control" id="email" name="email" required />
                 </div>
                 <div class="" id="">
                     <label class="col-form-label text-black">Speciality</label>
-                    <input type="text" class="form-control" id="" name="" required />
+                    <input type="text" class="form-control" id="speciality" name="speciality" required />
                 </div>
                 <div class="" id="">
                     <label class="col-form-label text-black">Password</label>
-                    <input type="password" class="form-control" id="" name="" required />
-                </div>
-                <div class="" id="">
-                    <label class="col-form-label text-black">Confirme Password</label>
-                    <input type="text" class="form-control" id="" name="" required />
+                    <input type="password" class="form-control" id="pass" name="pass" required />
                 </div>
                 </div>
                 <div class="modal-footer" style="background-color: #f1f2f3; border: none">
@@ -167,30 +167,31 @@
                 </div>
                 <div class="modal-body" style="background-color: #f1f2f3;">
                     <div class="" id="">
+                        <input type="text" id="docId" name="docId" style="display: none">
                         <label class="col-form-label text-black">First Name</label>
-                        <input type="text" class="form-control" id="" name=""/>
+                        <input type="text" class="form-control" id="editFirstName" name="editFirstName"/>
                 </div>
                 <div class="" id="">
                     <label class="col-form-label text-black">Last Name</label>
-                    <input type="text" class="form-control" id="" name=""/>
+                    <input type="text" class="form-control" id="editLastName" name="editLastName"/>
                 </div>
                 <div class="" id="">
                     <label class="col-form-label text-black">Email</label>
-                    <input type="text" class="form-control" id="" name=""/>
+                    <input type="text" class="form-control" id="editEmail" name="editEmail"/>
                 </div>
                 <div class="" id="">
                     <label class="col-form-label text-black">Speciality</label>
-                    <input type="text" class="form-control" id="" name=""/>
+                    <input type="text" class="form-control" id="editSpeciality" name="editSpeciality"/>
                 </div>
                 <div class="" id="">
                     <label class="col-form-label text-black">Password</label>
-                    <input type="password" class="form-control" id="" name="" required/>
+                    <input type="password" class="form-control" id="editPassword" name="editPassword" required/>
                 </div>
                 </div>
                 <div class="modal-footer" style="background-color: #f1f2f3; border: none">
                     <button type="button" class="btn btn-primary border rounded-pill" data-bs-dismiss="modal">Cancel
                     </button>
-                    <button type="submit" class="btn btn-success rounded-pill text-white" name="save" id="save">Update
+                    <button type="submit" class="btn btn-success rounded-pill text-white" name="update">Update
                     </button>
                 </form>
                 </div>

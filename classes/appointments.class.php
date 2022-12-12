@@ -61,4 +61,11 @@ class Appointments {
       $sql = "DELETE FROM appointment WHERE Appointment_number = '$appointNumber'";
       $stmt = $this->db->connect()->query($sql);
     }
+    public function countAppointments() {
+      $sql = "SELECT COUNT(*) FROM appointment";
+      $stmt = $this->db->connect()->query($sql);
+      $row = $stmt->fetch();
+      $appointCount = $row['COUNT(*)'];
+      echo '<h5 class="fw-bold ms-4 mt-3">My Appointments ('.$appointCount.')</h5>';
+    }
 }
