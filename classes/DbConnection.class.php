@@ -23,5 +23,5 @@ class DbConnection {
 //        if($this->$pdo != NULL){
 //            $this->pdo->close();
 //        }
-}
+
 ?>

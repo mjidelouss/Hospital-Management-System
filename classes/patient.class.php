@@ -1,5 +1,6 @@
 <?php
-require_once('../includes/autoloader.php');
+
+require_once('autoloader.php');
 
 class Patient extends User {
     public $date;
@@ -7,10 +8,10 @@ class Patient extends User {
     public $phone;
     public $db;
 
-    public function __construct() {
-      $this->db = new DbConnection;
-    }
 
+public function getpasword(){
+
+}
     public function bookSession() {
 
     }
@@ -18,25 +19,38 @@ class Patient extends User {
         
     }
     // public function __construct($frstname,$lstname,$email,$password,$birth_date,$cin,$phone_number) {
-  
+
 
     // }
 
-    public function sign_up($frstname,$lstname,$email,$password,$birth_date,$cin,$phone_number){
+    public function sign_up($Firstname,$Lastname,$CIN,$date,$email,$mobile,$password){
 
-        $query = $this->pdo->prepare("SELECT email FROM `rol`  Email = ? ");
-       $result  = $query->execute(array($email));
-        if ($result) {
 
-                    $_SESSION['signup_error'] = " this email already exist  ?";
+        if (!empty($Firstname)&&!empty($Lastname)&&!empty($CIN)&&!empty($date)&&!empty($email)&&!empty($mobile)&&!empty($password)){
+            $query = $this->pdo->prepare("SELECT * FROM `role` WHERE email = ?;");
+            $query->execute(array($email));
+            $result = $query->fetchAll();
+
+            if ($result) {
+
+
+                $_SESSION['signup_error'] = " this email already exist  ?";
+
+            } else {
+                $query = $this->pdo->prepare("INSERT INTO `role`(`rol_type`, `email`) VALUES (?,?)");
+                $query->execute(array("patient", $email));
+
+                $query = $this->pdo->prepare(" INSERT INTO `patient`(`First_name`, `Last_name`, `Email`, `PASSWORD`, `Birth_date`, `Cin`, `Phone_number`) VALUES (?,?,?,?,?,?,?) ;");
+                $query->execute(array($Firstname, $Lastname, $email, $password, $date, $CIN, $mobile));
+
+                $_SESSION['signup_result'] = "sign up success, you can know sing in  :)";
+
+                header('Location:sign_in.php');
+            }
         }else {
-            
-        $query = $this->pdo->prepare("INSERT INTO `patient`(`id`, `First_name`, `Last_name`, `Email`, `PASSWORD`, `Birth_date`, `Cin`, `Phone_number`) VALUES (NULL,'?','?','?','?','?','?','?')");
-        $query->execute(array($frstname,$lstname,$email,$password,$birth_date,$cin,$phone_number));
+            $_SESSION['signup_error'] = "pls fill in a valid information :( ?";
 
-            $_SESSION['signup_error'] = " sign up success :)";
         }
-
         
         
         
