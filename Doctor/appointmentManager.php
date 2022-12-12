@@ -26,8 +26,16 @@
                     <div class="d-flex pt-3">
                         <img src="../assets/img/user.png" class="rounded-circle ms-4" width="70" alt="Image Not Found">
                         <div class="ms-3 mt-2">
-                            <h5>Test Doctor</h5>
-                            <h6 class="user_email">doctor@gmail.com</h6>
+                        <?php
+                        $db = new DbConnection;
+                        $sql = "SELECT * FROM doctor";
+                        $stmt = $db->connect()->query($sql);
+                        $row = $stmt->fetch();
+                        $name = ''.$row["First_name"]." ".$row["Last_name"].'';
+                        $email = $row['Email'];
+                        echo '<h5>'.$name.'</h5>';
+                        echo '<h6 class="user_email">'.$email.'</h6>';
+                        ?>
                         </div>
                     </div>
                     <div class="mt-3 ms-4"><a href="../sign_in.php" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: #03639f;">Log out</a></div>
@@ -53,21 +61,24 @@
             <div class="me-4 mt-4 d-flex">
                 <div class="">
                 <p class="" style="margin-top: 0.3rem;">Today's Date</p>
-                <h4 class="fw-bold" style="margin-top: -1rem;">2020-05-02</h4>
+                <?php echo '<h4 class="fw-bold" style="margin-top: -1rem;">'.date("Y-m-d").'</h4>'?>
                  </div>
                  <div><img class="rounded p-2 border border-secondary ms-2" src="../assets/img/calendar.svg" alt=""></div>
                </div>
             </div>
-            <h5 class="fw-bold ms-4 mt-5">My Appointments(2)</h5>
+            <?php
+            $app = new Appointments;
+            $app->countAppointments();
+            ?>
             <div class="container">
             <div class="mt-4 mb-4 border border-secondary rounded p-1">
             <form method="POST">
                 <div class="input-group d-flex">
                 <h6 class="mt-3 me-4" style="margin-left: 13.2rem;">Date:</h6>
                     <div class="form-outline mt-1 me-4" style="width: 35rem;">
-                        <input type="date" name="searchBook" placeholder="jj/mm/aaaa" class="form-control"/>
+                        <input type="date" name="searchAppoint" placeholder="jj/mm/aaaa" class="form-control"/>
                     </div>
-                    <button type="submit" class="btn bg-info fw-bold rounded bg-opacity-25 ms-2" style="color: #03639f;"><img class="me-2 mb-1" src="../assets/img/icons/filter-iceblue.svg">Filter</button>
+                    <button type="submit" name="searchDate" class="btn bg-info fw-bold rounded bg-opacity-25 ms-2" style="color: #03639f;"><img class="me-2 mb-1" src="../assets/img/icons/filter-iceblue.svg">Filter</button>
                   </form>
                 </div>
             </div>
@@ -85,12 +96,21 @@
                             </thead>
                             <tbody id="doctor-table">
                             <?php
-                            //  $appointment = new ;
+                            $appoint = new Appointments;
+                            if (isset($_POST['searchDate'])) {
+                                $appointSearch = $_POST['searchAppoint'];
+                                $appoint->searchAppointment($appointSearch);
+                            }
+                            else
+                            {
+                                $appoint->displayAppointment();
+                            }
                             ?>
 </div>
 <!-- ================== BEGIN core-js ================== -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
 </script>
 <script src="../scripts/scripts.js"></script>
+</body>
 <!-- ================== END core-js ================== -->
 </html>

@@ -30,11 +30,11 @@
                     <div class="mt-3 ms-4"><a href="#" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: rgb(73, 166, 243);">log out</a></div>
                     <hr>
                         <div class="list-group-flush ms-3 list-group">
-                            <a href="admin.html" class="list-group-item bg-transparent"><img src="../assets/img/icons/home.svg" alt=""> Home</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> All Doctors</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/session.svg" alt=""> Scheduled Sessions</a>
+                            <a href="dashboardPatient.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/home.svg" alt=""> Home</a>
+                            <a href="allDoctors.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> All Doctors</a>
+                            <a href="ScheduleSession.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/session.svg" alt=""> Scheduled Sessions</a>
                             <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> My Bookings</a>
-                            <a href="#" class="list-group-item bg-transparent text-blue-500 border-3 border-blue border-end"><img src="../assets/img/icons/settings-iceblue.svg" alt=""> Settings</a>
+                            <a href="Settings.php" class="list-group-item bg-transparent text-blue-500 border-3 border-blue border-end"><img src="../assets/img/icons/settings-iceblue.svg" alt=""> Settings</a>
                         </div>
                 </div>
             <!-- Page Content -->
@@ -115,7 +115,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Are you sure ?</h5>
-        <button type="button" class="btn-close" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <p>You want to delete this record ?</p>

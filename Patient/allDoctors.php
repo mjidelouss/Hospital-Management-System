@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
+    <meta name="description" content=""/>
     <meta name="author" content="" />
     <title>Dashboard</title>
     <!-- ================== BEGIN core-css ================== -->
@@ -26,8 +26,16 @@
                     <div class="d-flex pt-3">
                         <img src="../assets/img/user.png" class="rounded-circle ms-4" width="70" alt="Image Not Found">
                         <div class="ms-3 mt-2">
-                            <h5>Mohamed mohamed</h5>
-                            <h6 class="user_email">mohamed@gmail.com</h6>
+                        <?php
+                        $db = new DbConnection;
+                        $sql = "SELECT * FROM patient";
+                        $stmt = $db->connect()->query($sql);
+                        $row = $stmt->fetch();
+                        $name = ''.$row["First_name"]." ".$row["Last_name"].'';
+                        $email = $row['Email'];
+                        echo '<h5>'.$name.'</h5>';
+                        echo '<h6 class="user_email">'.$email.'</h6>';
+                        ?>
                         </div>
                     </div>
                     <div class="mt-3 ms-4"><a href="../sign_in.php" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: #03639f;">Log out</a></div>
@@ -35,9 +43,9 @@
                         <div class="list-group-flush ms-3 list-group">
                             <a href="dashboardPatient.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/home.svg" alt=""> Home</a>
                             <a href="allDoctors.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> All Doctors</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/session.svg" alt=""> Scheduled Sessions</a>
+                            <a href="ScheduleSession.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/session.svg" alt=""> Scheduled Sessions</a>
                             <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> My Bookings</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/settings.svg" alt=""> Settings</a>
+                            <a href="Settings.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/settings.svg" alt=""> Settings</a>
                         </div>
                 </div>
             <!-- Page Content -->
@@ -54,7 +62,7 @@
                 <div class="input-group d-flex" style="margin-top: 2.2rem;">
                     <div class="form-outline">
                     <img id="search-img" src="../assets/img/search.svg">
-                        <input id="search-bar" type="search" name="searchBook" placeholder="Search Doctor Name or Email" class="form-control"/>
+                        <input id="search-bar" type="search" name="searchDoc" placeholder="Search Doctor Name or Email" class="form-control"/>
                     </div>
                     <button type="submit" name="search" class="btn btn-primary ms-2 rounded">Search</button>
                   </form>
@@ -62,14 +70,21 @@
             <div class="me-4 mt-4 d-flex">
                 <div class="">
                 <p class="" style="margin-top: 0.3rem;">Today's Date</p>
-                <h4 class="fw-bold" style="margin-top: -1rem;">2020-05-02</h4>
+                <?php echo '<h4 class="fw-bold" style="margin-top: -1rem;">'.date("Y-m-d").'</h4>'?>
                  </div>
                  <div><img class="rounded p-2 border border-secondary ms-2" src="../assets/img/calendar.svg" alt=""></div>
                </div>
             </div>
             <div class="d-flex justify-content-between mt-4">
             </div>
-            <h5 class="fw-bold ms-4 mt-3">All Doctors(1)</h5>
+            <?php
+            $db = new DbConnection;
+            $sql = "SELECT COUNT(*) FROM doctor";
+            $stmt = $db->connect()->query($sql);
+            $row = $stmt->fetch();
+            $docCount = $row['COUNT(*)'];
+            echo '<h5 class="fw-bold ms-4 mt-3">All Doctors ('.$docCount.')</h5>';
+            ?>
             <div class="container">
             <div class="col table-responsive mt-3 rounded">
                         <table class="table table-bordered bg-white rounded shadow-sm table-hover">
@@ -82,19 +97,41 @@
                                 </tr>
                             </thead>
                             <tbody id="doctor-table">
-                            <tr>
-          <th scope="row">Test Doctor</th>
-          <td>doctor@youcode.ma</td>
-          <td>Accident and Emergencies</td>
-          <td class="d-flex justify-content-evenly">
-            <button type="submit" class="btn bg-info fw-bold rounded bg-opacity-25" style="color: #03639f;"><img class="me-2 mb-1" src="../assets/img/icons/view-iceblue.svg">View</button>
-            <button type="submit" class="btn bg-info fw-bold rounded bg-opacity-25" style="color: #03639f;"><img class="me-2 mb-1" src="../assets/img/icons/session-iceblue.svg">Sessions</button>
-        </td>
-          </tr>
+                            <?php
+                            $doc = new Doctor;
+                            if (isset($_POST['search'])) {
+                                $docSearch = $_POST['searchDoc'];
+                                $doc->searchDoctor($docSearch);
+                            }
+                            else
+                            {
+                                $doc->displayDoctors();
+                            }
+                            ?>
 </div>
+<!-- VIEW MODAL -->
+<div class="modal fade" id="modal-view">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                        <div class="modal-header d-flex justify-content-center" style="border: none;"></div>
+                        <h1 class="text-center fw-bold">Details</h1>
+                        <div class="modal-body">
+                        <h5 class="text-info fw-bold">Name :</h5>
+                        <h5 class="text-info fw-bold">Email :</h5>
+                        <h5 class="text-info fw-bold">Specialties :</h5>
+                        </div>
+                        <div class="modal-footer" style="border: none">
+                            <button type="button" class="btn btn-primary border rounded" data-bs-dismiss="modal">
+                                OK
+                            </button>
+                </div>
+            </div>
+        </div>
+    </div>
 <!-- ================== BEGIN core-js ================== -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
 </script>
 <script src="../scripts/scripts.js"></script>
+</body>
 <!-- ================== END core-js ================== -->
 </html>
