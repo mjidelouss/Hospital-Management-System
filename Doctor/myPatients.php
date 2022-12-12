@@ -1,4 +1,5 @@
 <?php
+include "../includes/autoloader.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,11 +35,11 @@
                     </div>
                         <hr>
                         <div class="list-group-flush ms-3 list-group">
-                            <a href="admin.html" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt="">My Appointments</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/schedule.svg" alt=""> My Session</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> My Patients</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt=""> Settings</a>
+                            <a href="dashboardDoctor.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
+                            <a href="appointmentManager.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt="">My Appointments</a>
+                            <a href="Schedule.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/schedule.svg" alt=""> My Session</a>
+                            <a href="myPatients.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> My Patients</a>
+                            <a href="Settings.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt=""> Settings</a>
                         </div>
     </div>
             <!-- Page Content -->

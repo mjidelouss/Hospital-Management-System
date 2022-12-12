@@ -15,4 +15,5 @@ class Patient {
     public function signUp() {
 
     }
+    
 }

@@ -1,4 +1,5 @@
 <?php
+include "../includes/autoloader.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,11 +35,11 @@
                     </div>
                         <hr>
                         <div class="list-group-flush ms-3 list-group">
-                            <a href="admin.html" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> Doctors</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/schedule.svg" alt=""> Schedule</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> Appointment</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt=""> Patient</a>
+                            <a href="dashboardAdmin.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
+                            <a href="doctor.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> Doctors</a>
+                            <a href="Schedule.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/schedule.svg" alt=""> Schedule</a>
+                            <a href="appointment.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> Appointment</a>
+                            <a href="patient.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt=""> Patient</a>
                         </div>
     </div>
             <!-- Page Content -->
@@ -81,9 +82,11 @@
                             <td width="30%">
                             <select name="docid" id="" class="box filter-container-items" style="width:90% ;height: 37px;margin: 0;" >
                                 <option value="" disabled selected hidden>Choose Doctor Name from the list</option>  
-                                <option value="">doc1</option>
-                                <option value="">doc2</option>
-                                <option value="">doc3</option>
+                                <?php
+                                $docNamelist= new Admin();
+                                $docNamelist->
+                                ?>
+                               
                             </select>
                             </td>
                             <td width="12%">
@@ -107,24 +110,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">lorem</th>
-                        <td>1</td>
-                        <td>docA</td>
-                        <td>test session</td>
-                        <td>2015-04-03 18:00</td>
-                        <td>2015-04-03</td>
-                        <td><button class="btn bg-info bg-opacity-50 fw-bold" style="color: #03639f;"><img src="../assets//img/icons/delete-iceblue.svg" alt=""> Cancel</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">lorem</th>
-                        <td>1</td>
-                        <td>docA</td>
-                        <td>test session</td>
-                        <td>2015-04-03 18:00</td>
-                        <td>2015-04-03</td>
-                        <td><button class="btn bg-info bg-opacity-50 fw-bold" style="color: #03639f;"><img src="../assets//img/icons/delete-iceblue.svg" alt=""> Cancel</button></td>
-                    </tr>
+                                <?php
+                                $appoi = new Admin;
+                                $appoi->displaySession();
+                                
+                                ?>
                     </tbody>
                 </table>
             </div>
