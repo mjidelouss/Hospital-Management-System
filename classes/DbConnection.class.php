@@ -5,7 +5,7 @@ class DbConnection {
     public $user = "root";
     public $pwd = "";
 
-    public $dbName = "youcodehospitale";
+    public $dbName = "youcodehospital";
 
     public function connect() {
         try{
