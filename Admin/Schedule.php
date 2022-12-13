@@ -11,7 +11,7 @@ function varDamp($param){
 
 $doctors = new Schedule();
 
-varDamp($doctors->getAllDoctors());
+
 
 
 

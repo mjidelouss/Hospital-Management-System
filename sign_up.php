@@ -1,6 +1,28 @@
-<!-- <?php
-include 'scripts.php';
-?> -->
+ <?php
+
+session_start();
+
+
+require_once('classes/autoloader.php');
+
+
+
+
+if (isset($_POST["register"])) {
+ 
+   $newpatient = new Patient();
+
+     extract($_POST);
+
+
+
+
+  $newpatient->sign_up($Firstname,$Lastname,$CIN,$date,$email,$mobile,$password);
+
+
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +54,19 @@ include 'scripts.php';
                      <h1 class="text-center fw-bold mb-4 mx-1 mx-md-4 mt-4">Let's Get Started</h1>
                      <p class="text-center h6 text-muted mb-5 mx-1 mx-md-4 mt-4"> Add your personal details to continue </p>
 
-                   <form class="mx-1 mx-md-4" action="" method="post" >
+                      <!-- To show errors is user put wrong data -->
+                <?php if(isset($_SESSION['signup_error'])): ?>
+									<div class="alert alert-danger alert-dismissible fade show">
+										<strong>wrong!</strong>
+										<?php 
+									echo $_SESSION['signup_error'] ;
+									unset($_SESSION['signup_error']);
+										?>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+									</div>
+									<?php endif ?>
+
+                   <form class="mx-1 mx-md-4" action="sign_up.php" method="post" >
       
                              <!-- 2 column grid layout with text inputs for the first and last names -->
                                 <div class="row">
@@ -105,7 +139,7 @@ include 'scripts.php';
                                       <button class="btn btn-primary btn btn-block container-fluid mb-3 " type="submit"  name="register" >Register</button>
                                   
                         
-                                    <p class="text-center">Already have an account? <a href="" class="fw-bold text-black  text-decoration-none">Log in</a></p>
+                                    <p class="text-center">Already have an account? <a href="sign_in.php" class="fw-bold text-black  text-decoration-none">Log in</a></p>
 
           
                           </form>
