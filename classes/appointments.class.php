@@ -32,6 +32,7 @@ class Appointments {
           $this->cancelAppointment($_POST['cancel']);
         }
     }
+
     public function searchAppointment($appoint) {
       $sql = "SELECT appointment.Appointment_number, appointment.Appointment_date, session.Session_title, session.Scheduled_date, patient.First_name, patient.Last_name FROM appointment, patient, session WHERE session.id = appointment.Session_id AND patient.id = appointment.Patient_id AND appointment.Appointment_date LIKE '%$appoint%'";
       $stmt = $this->db->connect()->query($sql);
@@ -57,8 +58,17 @@ class Appointments {
           $this->cancelAppointment($_POST['cancel']);
       }
     }
+
     public function cancelAppointment($appointNumber) {
       $sql = "DELETE FROM appointment WHERE Appointment_number = '$appointNumber'";
       $stmt = $this->db->connect()->query($sql);
+    }
+    
+    public function countAppointments() {
+      $sql = "SELECT COUNT(*) FROM appointment";
+      $stmt = $this->db->connect()->query($sql);
+      $row = $stmt->fetch();
+      $appointCount = $row['COUNT(*)'];
+      echo '<h5 class="fw-bold ms-4 mt-3">My Appointments ('.$appointCount.')</h5>';
     }
 }

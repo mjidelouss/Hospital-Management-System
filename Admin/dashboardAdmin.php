@@ -1,3 +1,20 @@
+<?php
+    include "../includes/autoloader.php";
+    session_start();
+
+    $doctor = new user();
+    $doctor = $doctor->get_all('doctor');
+
+    $appointment = new user();
+    $appointment= $appointment->get_all('appointment');
+
+    $session = new user();
+    $session = $session->get_all('session');
+
+    $patient = new user();
+    $patient = $patient->get_all('patient');
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,25 +42,26 @@
             <div class="d-flex pt-3">
                 <img src="../assets/img/user.png" class="rounded-circle ms-4" width="70" alt="Image Not Found">
                 <div class="ms-3 mt-2">
-                    <h5>Admin</h5>
-                    <h6 class="user_email text-muted">admin@gmail.com</h6>
+                    <?php
+                        $db = new DbConnection;
+                        $sql = "SELECT * FROM admin";
+                        $stmt = $db->connect()->query($sql);
+                        $row = $stmt->fetch();
+                        $name = ''.$row["First_name"]." ".$row["Last_name"].'';
+                        $email = $row['Email'];
+                        echo '<h5>'.$name.'</h5>';
+                        echo '<h6 class="user_email">'.$email.'</h6>';
+                    ?>
                 </div>
             </div>
-            <div class="mt-3 d-flex justify-content-center"><a href="#"
-                    class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: rgb(73, 166, 243);">log out</a>
-            </div>
+            <div class="mt-3 ms-4"><a href="../sign_in.php" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: #03639f;">Log out</a></div>
             <hr>
             <div class="list-group-flush ms-3 list-group">
-                <a href="admin.html" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg"
-                        alt=""> Dashboard</a>
-                <a href="doctor.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt="">
-                    Doctors</a>
-                <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/schedule.svg" alt="">
-                    Schedule</a>
-                <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt="">
-                    Appointment</a>
-                <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt="">
-                    Patient</a>
+                <a href="dashboardAdmin.php" class="list-group-item bg-info bg-opacity-50 border-3 border-blue border-end"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
+                <a href="doctor.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> Doctors</a>
+                <a href="Schedule.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/schedule.svg" alt=""> Schedule</a>
+                <a href="appointment.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> Appointment</a>
+                <a href="patient.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt=""> Patient</a>
             </div>
         </div>
         <!-- Page Content -->
@@ -70,7 +88,13 @@
                     <div class=" col-md-3 mt-2 me-2 d-flex align-items-center justify-content-end ">
                         <div class="">
                             <p class="text-muted" style="margin-top: 0.3rem;">Today's Date</p>
-                            <h4 class="fw-bold" style="margin-top: -1rem;">2020-05-02</h4>
+                            <h4 class="fw-bold" style="margin-top: -1rem;"> <?php 
+                                date_default_timezone_set('Africa/Algiers');
+        
+                                $today = date('Y-m-d');
+                                echo $today;
+
+                                ?></h4>
                         </div>
                         <div>
                             <img class="rounded p-2 border border-secondary ms-2" src="../assets/img/calendar.svg"
@@ -78,6 +102,8 @@
                         </div>
                     </div>
                 </div>
+
+                
 
 
             </div>
@@ -96,7 +122,7 @@
                         <div
                             class="p-2 container-fluid bg-light d-flex justify-content-around align-items-center rounded border border-secondary">
                             <div>
-                                <h5 class="fs-2 text-blue">0</h5>
+                                <h5 class="fs-2 text-blue"><?php echo $doctor;?> </h5>
                                 <p class="fs-4 fw-bold">All Doctors</p>
                             </div>
                             <img class="bg-secondary rounded p-3 bg-opacity-10"
@@ -105,7 +131,7 @@
                         <div
                             class="p-2 container-fluid bg-light d-flex justify-content-around align-items-center rounded border border-secondary">
                             <div>
-                                <h5 class="fs-2 text-blue">0</h5>
+                                <h5 class="fs-2 text-blue"><?php echo $patient;?></h5>
                                 <p class="fs-4 fw-bold">All Patients</p>
                             </div>
                             <img class="bg-secondary rounded p-3 bg-opacity-10"
@@ -114,7 +140,7 @@
                         <div
                             class="p-2 container-fluid bg-light d-flex justify-content-around align-items-center rounded border border-secondary">
                             <div>
-                                <h5 class="fs-2 text-blue">0</h5>
+                                <h5 class="fs-2 text-blue"><?php echo $appointment;?></h5>
                                 <p class="fs-4 fw-bold">New Booking</p>
                             </div>
                             <img class="bg-secondary rounded p-3 bg-opacity-10" src="../assets/img/icons/book-hover.svg"
@@ -123,7 +149,7 @@
                         <div
                             class="p-2 container-fluid bg-light d-flex justify-content-around align-items-center rounded border border-secondary">
                             <div>
-                                <h5 class="fs-2 text-blue">0</h5>
+                                <h5 class="fs-2 text-blue"><?php echo $session;?></h5>
                                 <p class="fs-4 fw-bold">Today Sessions</p>
                             </div>
                             <img class="bg-secondary rounded p-3 bg-opacity-10"
@@ -145,7 +171,7 @@
                     <p class="fw-bold h4  text-blue">Upcoming Appointment until next week</p>
                     <p class="fw-bold  "> Here's Quick access to Upcoming Appointment until 7 days More details
                         available in @Appointment session. </p>
-                    <div class=" table-responsive border border-dark rounded bg-secondary" style=" height: 200px ;">
+                    <div class=" table-responsive border border rounded bg-white" style=" height: 200px ;">
 
                         <table class="table   align-middle mb-0 bg-white ">
                             <thead class="bg-light">
@@ -157,21 +183,27 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td></td>
-
-                                    <td></td>
-
-                                    <td></td>
-
-                                    <td></td>
-                                </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                          
+                            
                             </tbody>
                     </div>
                     </table>
+                    <center>
+                        <img class="bg-img" src="../assets/img/notfound.svg" width="25%">
+                        <br>
+                        <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">We
+                            couldnt find anything related to your keywords !</p>
 
-            </div>
-            <button class="btn btn-primary container-fluid">Show all Appointement</button>
+                    </center>
+
+                </div>
+                <button class="btn btn-primary container-fluid">Show all Appointement</button>
 
             </section>
 
@@ -182,7 +214,7 @@
                     and Many features available in @Schedule session. </p>
 
 
-                <div class=" table-responsive border border-dark rounded bg-secondary" style=" height: 200px ;">
+                <div class=" table-responsive border border rounded bg-white" style=" height: 200px ;">
 
                     <table class="table  align-middle mb-0 bg-white ">
                         <thead class="bg-light">
@@ -203,12 +235,20 @@
                         </tbody>
                 </div>
                 </table>
+                <center>
+                        <img src="../assets/img/notfound.svg" width="25%">
+                        <br>
+                        <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">We
+                            couldnt find anything related to your keywords !</p>
+
+                </center>
         </div>
-        <button class="btn btn-primary container-fluid">Show all Appointement</button>
+        <button class="btn btn-primary container-fluid">Show all Session</button>
 
         </section>
 
     </div>
+    
 
 
     </div>
@@ -218,5 +258,6 @@
     </script>
     <script src="../scripts/scripts.js"></script>
     <!-- ================== END core-js ================== -->
+</body>
 
 </html>

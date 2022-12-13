@@ -1,4 +1,5 @@
 <?php
+//require_once('../includes/autoloader.php');
 
 
 class User extends DbConnection
@@ -8,12 +9,9 @@ class User extends DbConnection
     public $lastName;
     public $email;
     public $password;
-    public $db;
 
-    public function __construct() {
-      $this->db = new DbConnection;
-    }
-    
+
+
     public function login($email, $password)
     {
            if (!empty($email) && !empty($password)) {
@@ -31,10 +29,6 @@ class User extends DbConnection
                     $role = $query->fetchAll();
 
                     $_SESSION['user'] = $role;
-                    echo "<pre>";
-                    // var_dump($_SESSION['user'][0]["id"]);
-                    echo "</pre>";
-                    // die();
                     $_SESSION['conn'] = 'success';
                     header('Location:Patient/dashboardPatient.php');
 
@@ -71,17 +65,5 @@ class User extends DbConnection
 
     public function displayAppointment()
     {
-    }
-    
-    public function get_all($user){
-  
-        $db = new DbConnection();
-        
-        $sql = "SELECT * FROM `$user`";
-        $STH = $db->connect()->prepare($sql);
-        $STH->execute();
-        $res = $STH->rowCount();
-
-        return $res;
     }
 }

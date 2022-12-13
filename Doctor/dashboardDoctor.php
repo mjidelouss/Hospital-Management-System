@@ -1,3 +1,21 @@
+<?php
+include "../includes/autoloader.php";
+session_start();
+
+
+    $doctor = new user();
+    $doctor = $doctor->get_all('doctor');
+
+    $appointment = new user();
+    $appointment= $appointment->get_all('appointment');
+
+    $session = new user();
+    $session = $session->get_all('session');
+
+    $patient = new user();
+    $patient = $patient->get_all('patient');
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,25 +43,27 @@
             <div class="d-flex pt-3">
                 <img src="../assets/img/user.png" class="rounded-circle ms-4" width="70" alt="Image Not Found">
                 <div class="ms-3 mt-2">
-                    <h5>Doctor</h5>
-                    <h6 class="text-muted user_email">admin@gmail.com</h6>
+                <?php
+                        $db = new DbConnection;
+                        $userid = $_SESSION['user'][0]["id"];
+                        $sql = "SELECT * FROM doctor WHERE id = $userid";
+                        $stmt = $db->connect()->query($sql);
+                        $row = $stmt->fetch();
+                        $name = ''.$row["First_name"]." ".$row["Last_name"].'';
+                        $email = $row['Email'];
+                        echo '<h5>'.$name.'</h5>';
+                        echo '<h6 class="user_email">'.$email.'</h6>';
+                    ?>
                 </div>
             </div>
-            <div class="mt-3 d-flex justify-content-center "><a href="#"
-                    class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: rgb(73, 166, 243);">log out</a>
-            </div>
+            <div class="mt-3 ms-4"><a href="../sign_in.php" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: #03639f;">Log out</a></div>
             <hr>
             <div class="list-group-flush ms-3 list-group">
-                <a href="dashboardDoctor.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg"
-                        alt=""> Dashboard</a>
-                <a href="appointmentManager.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> My
-                    appointment</a>
-                <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/session.svg" alt=""> My
-                    sessions</a>
-                <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt="">
-                    My Patients</a>
-                <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/settings.svg" alt="">
-                    Settings</a>
+                <a href="dashboardDoctor.php" class="list-group-item bg-info bg-opacity-50 border-3 border-blue border-end"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
+                <a href="appointmentManager.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> My appointment</a>
+                <a href="Schedule.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/session.svg" alt=""> My sessions</a>
+                <a href="myPatients.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt=""> My Patients</a>
+                <a href="Settings.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/settings.svg" alt=""> Settings</a>
             </div>
         </div>
         <!-- Page Content -->
@@ -147,9 +167,9 @@
                 <section class="ms-3 ">
                     <p class="fw-bold h4 text-blue ">Your Up Coming Session until next week</p>
 
-                    <div class=" table-responsive border border-dark rounded bg-secondary" style=" height: 200px ;">
+                    <div class=" table-responsive border border rounded " style=" height: 200px ;">
 
-                        <table class="table   align-middle mb-0 bg-white ">
+                        <table class="table align-middle mb-0 bg-white ">
                             <thead class="bg-light">
                                 <tr>
                                     <th>Session Title</th>
@@ -170,7 +190,17 @@
                             </tbody>
                     </div>
                     </table>
+                    <center>
+                        <img src="../assets/img/notfound.svg" width="25%">
+                        <br>
+                        <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">We
+                            couldnt find anything related to your keywords !</p>
+
+                    </center>
             </div>
+           
+            <button class="btn btn-primary container-fluid"><a class=" non-style-link text-white " href="schedule.php"> Show all Sessions </a></button>
+
 
             </section>
 

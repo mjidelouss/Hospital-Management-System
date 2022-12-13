@@ -1,4 +1,6 @@
 <?php
+    include "../includes/autoloader.php";
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,20 +27,26 @@
                     <div class="d-flex pt-3">
                         <img src="../assets/img/user.png" class="rounded-circle ms-4" width="70" alt="Image Not Found">
                         <div class="ms-3 mt-2">
-                            <h5>Admin</h5>
-                            <h6 class="user_email">admin@gmail.com</h6>
+                        <?php
+                        $db = new DbConnection;
+                        $sql = "SELECT * FROM admin";
+                        $stmt = $db->connect()->query($sql);
+                        $row = $stmt->fetch();
+                        $name = ''.$row["First_name"]." ".$row["Last_name"].'';
+                        $email = $row['Email'];
+                        echo '<h5>'.$name.'</h5>';
+                        echo '<h6 class="user_email">'.$email.'</h6>';
+                    ?>
                         </div>
                     </div>
-                    <div class="mt-3 ms-4">
-                        <a href="#" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: rgb(73, 166, 243);">log out</a>
-                    </div>
+                    <div class="mt-3 ms-4"><a href="../sign_in.php" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: #03639f;">Log out</a></div>
                         <hr>
                         <div class="list-group-flush ms-3 list-group">
-                            <a href="admin.html" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> Doctors</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/schedule.svg" alt=""> Schedule</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> Appointment</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt=""> Patient</a>
+                            <a href="dashboardAdmin.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
+                            <a href="doctor.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> Doctors</a>
+                            <a href="Schedule.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/schedule.svg" alt=""> Schedule</a>
+                            <a href="appointment.php" class="list-group-item bbg-info bg-opacity-50 border-3 border-blue border-end"><img src="../assets/img/icons/book.svg" alt=""> Appointment</a>
+                            <a href="patient.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt=""> Patient</a>
                         </div>
     </div>
             <!-- Page Content -->
@@ -132,11 +140,13 @@
         </div>
     </div>  
 </div>
+
 <!-- ================== BEGIN core-js ================== -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
 </script>
 <script src="../scripts/scripts.js"></script>
 <!-- ================== END core-js ================== -->
+</body>
 </html>
 
 
