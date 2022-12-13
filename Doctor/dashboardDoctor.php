@@ -1,3 +1,19 @@
+<?php
+    include "../includes/autoloader.php";
+
+    $doctor = new user();
+    $doctor = $doctor->get_all('doctor');
+
+    $appointment = new user();
+    $appointment= $appointment->get_all('appointment');
+
+    $session = new user();
+    $session = $session->get_all('session');
+
+    $patient = new user();
+    $patient = $patient->get_all('patient');
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -103,7 +119,7 @@
                             <div
                                 class="p-2 container-fluid bg-light d-flex justify-content-around align-items-center rounded border border-secondary">
                                 <div>
-                                    <h5 class="fs-2 text-blue">0</h5>
+                                    <h5 class="fs-2 text-blue"><?php echo $doctor;?> </h5>
                                     <p class="fs-4 fw-bold">All Doctors</p>
                                 </div>
                                 <img class="bg-secondary rounded p-3 bg-opacity-10"
@@ -112,7 +128,7 @@
                             <div
                                 class="p-2 container-fluid bg-light d-flex justify-content-around align-items-center rounded border border-secondary">
                                 <div>
-                                    <h5 class="fs-2 text-blue">0</h5>
+                                    <h5 class="fs-2 text-blue"><?php echo $patient;?></h5>
                                     <p class="fs-4 fw-bold">All Patients</p>
                                 </div>
                                 <img class="bg-secondary rounded p-3 bg-opacity-10"
@@ -121,7 +137,7 @@
                             <div
                                 class="p-2 container-fluid bg-light d-flex justify-content-around align-items-center rounded border border-secondary">
                                 <div>
-                                    <h5 class="fs-2 text-blue">0</h5>
+                                    <h5 class="fs-2 text-blue"><?php echo $appointment;?></h5>
                                     <p class="fs-4 fw-bold">New Booking</p>
                                 </div>
                                 <img class="bg-secondary rounded p-3 bg-opacity-10"
@@ -130,7 +146,7 @@
                             <div
                                 class="p-2 container-fluid bg-light d-flex justify-content-around align-items-center rounded border border-secondary">
                                 <div>
-                                    <h5 class="fs-2 text-blue">0</h5>
+                                    <h5 class="fs-2 text-blue"><?php echo $session;?></h5>
                                     <p class="fs-4 fw-bold">Today Sessions</p>
                                 </div>
                                 <img class="bg-secondary rounded p-3 bg-opacity-10"
@@ -142,6 +158,7 @@
                         </div>
 
                     </section>
+
 
                 </section>
 
@@ -179,8 +196,9 @@
 
                     </center>
             </div>
-           
-            <button class="btn btn-primary container-fluid"><a class=" non-style-link text-white " href="schedule.php"> Show all Sessions </a></button>
+
+            <button class="btn btn-primary container-fluid"><a class=" non-style-link text-white " href="schedule.php">
+                    Show all Sessions </a></button>
 
 
             </section>
