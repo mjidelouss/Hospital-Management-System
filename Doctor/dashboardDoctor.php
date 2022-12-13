@@ -142,9 +142,9 @@
                 <section class="ms-3 ">
                     <p class="fw-bold h4 text-blue ">Your Up Coming Session until next week</p>
 
-                    <div class=" table-responsive border border-dark rounded bg-secondary" style=" height: 200px ;">
+                    <div class=" table-responsive border border rounded " style=" height: 200px ;">
 
-                        <table class="table   align-middle mb-0 bg-white ">
+                        <table class="table align-middle mb-0 bg-white ">
                             <thead class="bg-light">
                                 <tr>
                                     <th>Session Title</th>
@@ -165,7 +165,17 @@
                             </tbody>
                     </div>
                     </table>
+                    <center>
+                        <img src="../assets/img/notfound.svg" width="25%">
+                        <br>
+                        <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">We
+                            couldnt find anything related to your keywords !</p>
+
+                    </center>
             </div>
+           
+            <button class="btn btn-primary container-fluid"><a class=" non-style-link text-white " href="schedule.php"> Show all Sessions </a></button>
+
 
             </section>
 

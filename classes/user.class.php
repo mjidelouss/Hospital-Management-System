@@ -142,4 +142,17 @@ class User extends DbConnection
     public function displayAppointment()
     {
     }
+    
+    public function get_all($user){
+  
+        $db = new DbConnection();
+        
+        $sql = "SELECT * FROM `$user`";
+        $STH = $db->connect()->prepare($sql);
+        $STH->execute();
+     $res = $STH->rowCount();
+
+        return $res;
+       
+    }
 }

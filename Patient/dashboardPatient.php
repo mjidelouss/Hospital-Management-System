@@ -1,3 +1,19 @@
+<?php
+    include "../includes/autoloader.php";
+
+    $doctor = new user();
+    $doctor = $doctor->get_all('doctor');
+
+    $appointment = new user();
+    $appointment= $appointment->get_all('appointment');
+
+    $session = new user();
+    $session = $session->get_all('session');
+
+    $patient = new user();
+    $patient = $patient->get_all('patient');
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,7 +72,17 @@
                     <div class="me-4 mt-4 d-flex">
                         <div class="">
                             <p class="text-muted" style="margin-top: 0.3rem;">Today's Date</p>
-                            <h4 class="fw-bold" style="margin-top: -1rem;">2020-05-02</h4>
+                            <h4 class="fw-bold" style="margin-top: -1rem;">
+
+                                <?php 
+                                date_default_timezone_set('Africa/Algiers');
+        
+                                $today = date('Y-m-d');
+                                echo $today;
+
+                                ?>
+
+                            </h4>
                         </div>
                         <div><img class="rounded p-2 border border-secondary ms-2" src="../assets/img/calendar.svg"
                                 alt=""></div>
@@ -111,7 +137,7 @@
                             <div
                                 class="p-2 container-fluid bg-light d-flex justify-content-around align-items-center rounded border border-secondary">
                                 <div>
-                                    <h5 class="fs-2 text-blue">0</h5>
+                                    <h5 class="fs-2 text-blue"><?php echo $doctor;?> </h5>
                                     <p class="fs-4 fw-bold">All Doctors</p>
                                 </div>
                                 <img class="bg-secondary rounded p-3 bg-opacity-10"
@@ -120,7 +146,7 @@
                             <div
                                 class="p-2 container-fluid bg-light d-flex justify-content-around align-items-center rounded border border-secondary">
                                 <div>
-                                    <h5 class="fs-2 text-blue">0</h5>
+                                    <h5 class="fs-2 text-blue"><?php echo $patient;?></h5>
                                     <p class="fs-4 fw-bold">All Patients</p>
                                 </div>
                                 <img class="bg-secondary rounded p-3 bg-opacity-10"
@@ -129,7 +155,7 @@
                             <div
                                 class="p-2 container-fluid bg-light d-flex justify-content-around align-items-center rounded border border-secondary">
                                 <div>
-                                    <h5 class="fs-2 text-blue">0</h5>
+                                    <h5 class="fs-2 text-blue"><?php echo $appointment;?></h5>
                                     <p class="fs-4 fw-bold">New Booking</p>
                                 </div>
                                 <img class="bg-secondary rounded p-3 bg-opacity-10"
@@ -138,7 +164,7 @@
                             <div
                                 class="p-2 container-fluid bg-light d-flex justify-content-around align-items-center rounded border border-secondary">
                                 <div>
-                                    <h5 class="fs-2 text-blue">0</h5>
+                                    <h5 class="fs-2 text-blue"><?php echo $session;?></h5>
                                     <p class="fs-4 fw-bold">Today Sessions</p>
                                 </div>
                                 <img class="bg-secondary rounded p-3 bg-opacity-10"
@@ -148,15 +174,14 @@
 
 
                         </div>
-
                     </section>
 
                 </section>
 
                 <section class="ms-3 ">
-                    <p class="fw-bold h4 text-blue  ">Your Up Coming Session until next week</p>
+                    <p class="fw-bold h4 text-blue ">Your Up Coming Session until next week</p>
 
-                    <div class=" table-responsive border border-dark rounded bg-secondary" style=" height: 200px ;">
+                    <div class=" table-responsive border border rounded bg-white" style=" height: 200px ;">
 
                         <table class="table align-middle mb-0 bg-white  ">
                             <thead class="bg-light">
@@ -182,7 +207,16 @@
                             </tbody>
                     </div>
                     </table>
+                    <center>
+                        <img src="../assets/img/notfound.svg" width="25%">
+                        <br>
+                        <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">We
+                            couldnt find anything related to your keywords !</p>
+
+                    </center>
             </div>
+            <button class="btn btn-primary container-fluid">Show all Appointement</button>
+
 
             </section>
 
@@ -194,8 +228,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
     </script>
-     <script src="../scripts/scripts.js"></script>
+    <script src="../scripts/scripts.js"></script>
     <!-- ================== END core-js ================== -->
 
 </html>
-
