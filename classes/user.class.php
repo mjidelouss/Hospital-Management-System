@@ -14,8 +14,7 @@ class User extends DbConnection
     public function __construct() {
       $this->db = new DbConnection;
     }
-
-
+    
     public function login($email, $password)
     {
 

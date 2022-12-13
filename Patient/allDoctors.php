@@ -42,9 +42,9 @@
                     <hr>
                         <div class="list-group-flush ms-3 list-group">
                             <a href="dashboardPatient.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/home.svg" alt=""> Home</a>
-                            <a href="allDoctors.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> All Doctors</a>
+                            <a href="allDoctors.php" class="list-group-item bg-info bg-opacity-50 border-3 border-blue border-end"><img src="../assets/img/icons/doctors.svg" alt=""> All Doctors</a>
                             <a href="ScheduleSession.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/session.svg" alt=""> Scheduled Sessions</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> My Bookings</a>
+                            <a href="myBooking.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> My Bookings</a>
                             <a href="Settings.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/settings.svg" alt=""> Settings</a>
                         </div>
                 </div>
@@ -100,8 +100,7 @@
                             <?php
                             $doc = new Doctor;
                             if (isset($_POST['search'])) {
-                                $docSearch = $_POST['searchDoc'];
-                                $doc->searchDoctor($docSearch);
+                                $doc->searchDoctor($_POST['searchDoc']);
                             }
                             else
                             {

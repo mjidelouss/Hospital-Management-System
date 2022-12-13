@@ -29,21 +29,14 @@
                     <h6 class="user_email text-muted">admin@gmail.com</h6>
                 </div>
             </div>
-            <div class="mt-3 d-flex justify-content-center"><a href="#"
-                    class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: rgb(73, 166, 243);">log out</a>
-            </div>
+            <div class="mt-3 ms-4"><a href="../sign_in.php" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: #03639f;">Log out</a></div>
             <hr>
             <div class="list-group-flush ms-3 list-group">
-                <a href="dashboardPatient.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/home.svg" alt="">
-                    Home</a>
-                <a href="allDoctors.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt="">
-                    All Doctors</a>
-                <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/schedule.svg" alt="">
-                    Scheduled Sessions</a>
-                <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt="">
-                    My bookings</a>
-                <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/Settings.svg" alt="">
-                    Settings</a>
+                <a href="dashboardPatient.php" class="list-group-item bg-info bg-opacity-50 border-3 border-blue border-end"><img src="../assets/img/icons/home.svg" alt=""> Home</a>
+                <a href="allDoctors.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> All Doctors</a>
+                <a href="ScheduleSession.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/session.svg" alt=""> Scheduled Sessions</a>
+                <a href="myBooking.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> My bookings</a>
+                <a href="Settings.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/Settings.svg" alt=""> Settings</a>
             </div>
         </div>
         <!-- Page Content -->
@@ -56,7 +49,7 @@
                         <div class="d-flex align-items-center" style="margin-top: 1rem;">
                             <i class="fas fa-bars primary-text fs-4 me-3" style="color: black; cursor: pointer;"
                                 id="controlPanel" onclick="wrapside()"></i>
-                            <h2 class="fs-2 m-0">home</h2>
+                            <h2 class="fs-2 m-0">Home</h2>
                         </div>
                     </nav>
 
