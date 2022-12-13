@@ -1,19 +1,15 @@
 <?php
 include "./includes/autoloader.php";
 session_start();
-$_SESSION['signup_error'] = " ---------------";
 echo $_SESSION['signup_error'];
 
 var_dump($_SESSION['signup_error']);
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-
     $newuser = new User();
     $email = $_POST['email'];
     $password = $_POST['password'];
     $newuser->login($email, $password);
-
-
 }
 
 
