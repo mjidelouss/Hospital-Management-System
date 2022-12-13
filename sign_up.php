@@ -1,7 +1,7 @@
 <!-- <?php
 session_start();
 include 'scripts.php';
-require_once('classes/autoloader.php');
+require_once('includes/autoloader.php');
 
 
 
@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 									echo $_SESSION['signup_error'] ; 
 									
 										?>
-										<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
 									</div>
 									<?php endif ?>
 

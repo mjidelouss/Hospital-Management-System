@@ -1,14 +1,12 @@
  <?php
-
+ require_once('includes/autoloader.php');
  session_start();
 
- require_once('classes/autoloader.php');
- 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-  $newuser = new User();
+    $newuser = new User();
 
-  $email      = $_POST['email'];
+    $email      = $_POST['email'];
 	$password   = $_POST['password'];
   
   $newuser->login($email,$password);
@@ -60,9 +58,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 										<strong>wrong!</strong>
 										<?php 
 									echo $_SESSION['login_error'] ; 
-									
+									unset($_SESSION['login_error'] );
 										?>
-										<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
 									</div>
 									<?php endif ?>
 

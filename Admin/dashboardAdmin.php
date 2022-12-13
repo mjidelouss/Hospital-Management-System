@@ -34,15 +34,15 @@
             </div>
             <hr>
             <div class="list-group-flush ms-3 list-group">
-                <a href="admin.html" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg"
+                <a href="dashboardAdmin.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg"
                         alt=""> Dashboard</a>
                 <a href="doctor.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt="">
                     Doctors</a>
-                <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/schedule.svg" alt="">
+                <a href="Schedule.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/schedule.svg" alt="">
                     Schedule</a>
-                <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt="">
+                <a href="appointment.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt="">
                     Appointment</a>
-                <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt="">
+                <a href="patient.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt="">
                     Patient</a>
             </div>
         </div>
@@ -170,8 +170,8 @@
                     </div>
                     </table>
 
-            </div>
-            <button class="btn btn-primary container-fluid">Show all Appointement</button>
+                </div>
+                <button class="btn btn-primary container-fluid">Show all Appointement</button>
 
             </section>
 
@@ -218,5 +218,6 @@
     </script>
     <script src="../scripts/scripts.js"></script>
     <!-- ================== END core-js ================== -->
+</body>
 
 </html>

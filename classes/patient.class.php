@@ -24,14 +24,14 @@ class Patient extends User {
 
     public function sign_up($frstname,$lstname,$email,$password,$birth_date,$cin,$phone_number){
 
-        $query = $this->pdo->prepare("SELECT email FROM `rol`  Email = ? ");
+        $query = $this->connect()->prepare("SELECT email FROM `rol`  Email = ? ");
        $result  = $query->execute(array($email));
         if ($result) {
 
-                    $_SESSION['signup_error'] = " this email already exist  ?";
+            $_SESSION['signup_error'] = " this email already exist  ?";
         }else {
             
-        $query = $this->pdo->prepare("INSERT INTO `patient`(`id`, `First_name`, `Last_name`, `Email`, `PASSWORD`, `Birth_date`, `Cin`, `Phone_number`) VALUES (NULL,'?','?','?','?','?','?','?')");
+        $query = $this->connect()->prepare("INSERT INTO `patient`(`id`, `First_name`, `Last_name`, `Email`, `PASSWORD`, `Birth_date`, `Cin`, `Phone_number`) VALUES (NULL,'?','?','?','?','?','?','?')");
         $query->execute(array($frstname,$lstname,$email,$password,$birth_date,$cin,$phone_number));
 
             $_SESSION['signup_error'] = " sign up success :)";
