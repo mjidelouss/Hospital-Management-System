@@ -1,4 +1,6 @@
 <?php
+include "../includes/autoloader.php";
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,8 +27,17 @@
                     <div class="d-flex pt-3">
                         <img src="../assets/img/user.png" class="rounded-circle ms-4" width="70" alt="Image Not Found">
                         <div class="ms-3 mt-2">
-                            <h5>Patient Name</h5>
-                            <h6 class="user_email">patient@gmail.com</h6>
+                        <?php
+                        $db = new DbConnection;
+                        $userid = $_SESSION['user'][0]["id"];
+                        $sql = "SELECT * FROM patient WHERE id = $userid";
+                        $stmt = $db->connect()->query($sql);
+                        $row = $stmt->fetch();
+                        $name = ''.$row["First_name"]." ".$row["Last_name"].'';
+                        $email = $row['Email'];
+                        echo '<h5>'.$name.'</h5>';
+                        echo '<h6 class="user_email">'.$email.'</h6>';
+                        ?>
                         </div>
                     </div>
                     <div class="mt-3 ms-4"><a href="../sign_in.php" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: #03639f;">Log out</a></div>

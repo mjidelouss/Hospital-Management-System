@@ -1,3 +1,7 @@
+<?php
+include "../includes/autoloader.php";
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,11 +27,20 @@
                     <div class="d-flex pt-3">
                         <img src="../assets/img/user.png" class="rounded-circle ms-4" width="70" alt="Image Not Found">
                         <div class="ms-3 mt-2">
-                            <h5>Test Doctor</h5>
-                            <h6 class="user_email">doctor@gmail.com</h6>
+                        <?php
+                        $db = new DbConnection;
+                        $userid = $_SESSION['user'][0]["id"];
+                        $sql = "SELECT * FROM doctor WHERE id = $userid";
+                        $stmt = $db->connect()->query($sql);
+                        $row = $stmt->fetch();
+                        $name = ''.$row["First_name"]." ".$row["Last_name"].'';
+                        $email = $row['Email'];
+                        echo '<h5>'.$name.'</h5>';
+                        echo '<h6 class="user_email">'.$email.'</h6>';
+                    ?>
                         </div>
                     </div>
-                    <div class="mt-3 ms-4"><a href="#" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: rgb(73, 166, 243);">log out</a></div>
+                    <div class="mt-3 ms-4"><a href="../sign_in.php" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: #03639f;">Log out</a></div>
                     <hr>
                         <div class="list-group-flush ms-3 list-group">
                             <a href="dashboardDoctor.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>

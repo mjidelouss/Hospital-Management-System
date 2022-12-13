@@ -33,7 +33,7 @@ class Doctor extends User{
         <td>'.$this->speciality.'</td>
         <td class="d-flex justify-content-evenly">
           <button type="submit" class="btn bg-info fw-bold rounded bg-opacity-25" data-info="'.$this->firstName.','.$this->lastName.','.$this->email.','.$this->speciality.','.$this->password.'" style="color: #03639f;" data-bs-toggle="modal" data-bs-target="#modal-edit" id="'.$this->id.'" onclick="initializeDoc('.$this->id.')"><img class="me-2 mb-1" src="../assets/img/icons/edit-iceblue.svg">Edit</button>
-          <button type="submit" class="btn bg-info fw-bold rounded bg-opacity-25" data-bs-toggle="modal" data-bs-target="#modal-view" data-view="'.$this->firstName.','.$this->lastName.','.$this->email.','.$this->speciality.'" id="'.$this->id.'" onclick="viewDoc('.$this->id.')" style="color: #03639f;"><img class="me-2 mb-1" src="../assets/img/icons/view-iceblue.svg">View</button>
+          <button type="submit" class="btn bg-info fw-bold rounded bg-opacity-25" data-bs-toggle="modal" data-bs-target="#modal-view" onclick="viewDoc('.$this->id.')" style="color: #03639f;"><img class="me-2 mb-1" src="../assets/img/icons/view-iceblue.svg">View</button>
           <form method="POST">
           <input type="text" name="remove" value="'.$this->id.'" style="display: none">
           <button type="submit" class="btn bg-info fw-bold rounded bg-opacity-25" style="color: #03639f;"><img class="me-2 mb-1" src="../assets/img/icons/delete-iceblue.svg">Remove</button>
@@ -101,7 +101,7 @@ class Doctor extends User{
         <td>'.$this->email.'</td>
         <td>'.$this->speciality.'</td>
         <td class="d-flex justify-content-evenly">
-          <button type="submit" class="btn bg-info fw-bold rounded bg-opacity-25" data-bs-toggle="modal" data-bs-target="#modal-view" style="color: #03639f;"><img class="me-2 mb-1" src="../assets/img/icons/view-iceblue.svg">View</button>
+          <button type="submit" class="btn bg-info fw-bold rounded bg-opacity-25" data-bs-toggle="modal" data-bs-target="#modal-view" onclick="viewDoc2('.$this->firstName.', '.$this->lastName.', '.$this->email.', '.$this->speciality.')" style="color: #03639f;"><img class="me-2 mb-1" src="../assets/img/icons/view-iceblue.svg">View</button>
           <button type="submit" class="btn bg-info fw-bold rounded bg-opacity-25" style="color: #03639f;"><img class="me-2 mb-1" src="../assets/img/icons/session-iceblue.svg">Sessions</button>
       </td>
         </tr>
@@ -124,7 +124,7 @@ class Doctor extends User{
         <td>'.$this->email.'</td>
         <td>'.$this->speciality.'</td>
         <td class="d-flex justify-content-evenly">
-          <button type="submit" class="btn bg-info fw-bold rounded bg-opacity-25" data-bs-toggle="modal" data-bs-target="#modal-view" style="color: #03639f;"><img class="me-2 mb-1" src="../assets/img/icons/view-iceblue.svg">View</button>
+          <button type="submit" class="btn bg-info fw-bold rounded bg-opacity-25" data-bs-toggle="modal" data-bs-target="#modal-view" onclick="viewDoc2('.$this->firstName.', '.$this->lastName.', '.$this->email.', '.$this->speciality.')" style="color: #03639f;"><img class="me-2 mb-1" src="../assets/img/icons/view-iceblue.svg">View</button>
           <button type="submit" class="btn bg-info fw-bold rounded bg-opacity-25" style="color: #03639f;"><img class="me-2 mb-1" src="../assets/img/icons/session-iceblue.svg"><a href="ScheduleSession.php" class="text-decoration-none">Sessions</a></button>
       </td>
         </tr>
