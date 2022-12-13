@@ -1,3 +1,8 @@
+<?php
+require_once('../includes/autoloader.php');
+require_once('../classes/DbConnection.class.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +15,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link href="../assets/css/default/app.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" /> -->
+    
     <link rel="stylesheet" href="../styles/style2.css"/>
     <!-- ================== END core-css ================== -->
 </head>
@@ -86,7 +91,9 @@
                 <div class="border border-info rounded" style="width: 95%;">
    <table class="text-center my-2 w-100">
                 <tr style="border-bottom: solid #1253B8;">
-                    <th class="py-3">Name</th>
+                    <th class="py-3">ID</th>
+                    <th class="py-3">First Name</th>
+                    <th>Last Name</th>
                     <th>CIN</th>
                     <th>Telephone</th>
                     <th>E-mail</th>
@@ -95,15 +102,50 @@
                     
                 </tr>
                 <tbody>
-                    
+                    <?php
+
+                    $patient = new DbConnection();
+
+                    $query = "SELECT * FROM `patient`";
+                    $statement = $patient->connect()->prepare($query);
+                    $statement -> execute();
+
+                    $result = $statement->fetchAll();
+                    if ($result) {
+                        foreach ($result as $row) {
+                            ?>
                         <tr>
-                            <td class="py-5">Abounore</td>
-                            <td>K56215</td>
-                            <td>32178326</td>
-                            <td>ABOU@gmail.com</td>
-                            <td>98/02/07</td>
-                            <td><button class="btn btn-primary text-light"><img src="../assets/img/icons/view-iceblue.svg" alt=""> View </button></td>                 
+                            <td class="py-4"><?= $row['id'] ?></td>
+                            <input type="hidden" id="<?= $row['id'] ?>" value="<?= $row['id'] ?>">
+                            
+                            <td class="py-4"><?= $row['First_name'] ?></td>
+                            <input type="hidden" id="fname-<?= $row['id'] ?>" value="<?= $row['First_name'] ?>">
+                            
+                            <td><?= $row['Last_name'] ?></td>
+                            <input id="lname-<?= $row['id'] ?>" type="hidden" value="<?= $row['Last_name'] ?>">
+                            
+                            <td><?= $row['Cin'] ?></td>
+                            <input id="cin-<?= $row['id'] ?>" type="hidden" value="<?= $row['Cin'] ?>">
+                            
+                            <td><?= $row['Phone_number'] ?></td>
+                            <input id="phoneNumber-<?= $row['id'] ?>" type="hidden" value="<?= $row['Phone_number'] ?>">
+                            
+                            <td><?= $row['Email'] ?></td>
+                            <input id="email-<?= $row['id'] ?>" type="hidden" value="<?= $row['Email'] ?>">
+                            
+                            <td><?= $row['Birth_date'] ?></td>
+                            <input id="birthday-<?= $row['id'] ?>" type="hidden" value="<?= $row['Birth_date'] ?>">
+                            
+                            <td><button class="btn btn-primary text-light" data-bs-toggle="modal" data-bs-target="#pateintModal" onclick="getData(<?= $row['id'] ?>)" id="<?= $row['id'] ?>"><img src="../assets/img/icons/view-iceblue.svg" alt=""> View </button></td>
+                            <input id="viewBtn-<?= $row['id'] ?>" type="hidden" value="<?= $row['id'] ?>">
+                            
                         </tr>
+
+
+                            <?php
+                        }
+                    }                    
+                    ?>
                 </tbody>
                 
     </table> 
@@ -112,6 +154,54 @@
             </div>
         </div>
 </div>
+
+<div class="modal fade" id="pateintModal" tabindex="-1" role="dialog" aria-labelledby="pateintModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+			  <div class="modal-content">
+				<div class="modal-header bg-primary text-white">
+                  <div class="d-flex m-auto justify-content-center w-100">
+                        <img src="../assets/img/icons/patients.svg" alt="">
+                        <h5 class="modal-title offset-5 mx-3" id="pateintModalLabel">Patients Details</h5>
+                  </div>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				  </button>
+				</div>
+				<div class="modal-body" style="background-color:#CAEBF2;">
+				<form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">First Name</label>
+                            <input type="text" class="form-control" disabled="disabled" id="fname_moodle" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Last Name</label>
+                            <input type="text" class="form-control" disabled="disabled" id="lname_moodle" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">CIN</label>
+                            <input type="text" class="form-control" disabled="disabled" id="cin_moodle" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Phone Number</label>
+                            <input type="text" class="form-control" disabled="disabled" id="phoneNumber_moodle" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">E-mail</label>
+                            <input type="email" class="form-control" disabled="disabled" id="email_moodle"  value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Date of Birth</label>
+                            <input type="text" class="form-control" disabled="disabled" id="birthday_moodle" value="">
+                        </div>
+                </form>
+					
+				</div>
+				<div class="modal-footer">
+				  	<button type="" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
+	
 <!-- ================== BEGIN core-js ================== -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
 </script>
