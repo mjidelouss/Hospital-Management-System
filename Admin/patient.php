@@ -1,7 +1,6 @@
 <?php
 require_once('../includes/autoloader.php');
-require_once('../classes/DbConnection.class.php');
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,9 +14,8 @@ require_once('../classes/DbConnection.class.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link href="../assets/css/default/app.min.css" rel="stylesheet" />
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" /> -->
-    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
     <link rel="stylesheet" href="../styles/style2.css"/>
     <!-- ================== END core-css ================== -->
 </head>
@@ -28,18 +26,26 @@ require_once('../classes/DbConnection.class.php');
                     <div class="d-flex pt-3">
                         <img src="../assets/img/user.png" class="rounded-circle ms-4" width="70" alt="Image Not Found">
                         <div class="ms-3 mt-2">
-                            <h5>Admin</h5>
-                            <h6 class="user_email">admin@gmail.com</h6>
+                        <?php
+                        $db = new DbConnection;
+                        $sql = "SELECT * FROM admin";
+                        $stmt = $db->connect()->query($sql);
+                        $row = $stmt->fetch();
+                        $name = ''.$row["First_name"]." ".$row["Last_name"].'';
+                        $email = $row['Email'];
+                        echo '<h5>'.$name.'</h5>';
+                        echo '<h6 class="user_email">'.$email.'</h6>';
+                    ?>
                         </div>
                     </div>
-                    <div class="mt-3 ms-4"><a href="#" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: rgb(73, 166, 243);">log out</a></div>
+                    <div class="mt-3 ms-4"><a href="../sign_in.php" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: #03639f;">Log out</a></div>
                     <hr>
                         <div class="list-group-flush ms-3 list-group">
-                            <a href="admin.html" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> Doctors</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/schedule.svg" alt=""> Schedule</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> Appointment</a>
-                            <a href="#" class="list-group-item bg-transparent text-blue-500 border-3 border-blue border-end"><img src="../assets/img/icons/patients-hover.svg" alt=""> Patient</a>
+                            <a href="dashboardAdmin.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
+                            <a href="doctor.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> Doctors</a>
+                            <a href="Schedule.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/schedule.svg" alt=""> Schedule</a>
+                            <a href="appointment.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> Appointment</a>
+                            <a href="patient.php" class="list-group-item bg-info bg-opacity-50 border-3 border-blue border-end"><img src="../assets/img/icons/patients.svg" alt=""> Patient</a>
                         </div>
                 </div>
             <!-- Page Content -->
@@ -47,14 +53,9 @@ require_once('../classes/DbConnection.class.php');
             <nav class="navbar navbar-expand-lg bg-transparent py-4 px-4 d-flex justify-content-between">
                 <div class=" d-flex ">
     
-                    <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center">
                         <i class="fas fa-bars primary-text fs-4 me-3" style="color: black; cursor: pointer;"
                             id="controlPanel" onclick="wrapside()"></i>
-                    </div>
-                    <div class=" row bg-blue-100  rounded-1  p-2" >
-                        <img src="../assets/icon/back-iceblue.svg" alt="" class="  col">
-                        <p class=" col align-items-center m-0 fw-800 fs-5 text-blue "> Back</p>
-    
                     </div>
     
                    
@@ -136,12 +137,10 @@ require_once('../classes/DbConnection.class.php');
                             <td><?= $row['Birth_date'] ?></td>
                             <input id="birthday-<?= $row['id'] ?>" type="hidden" value="<?= $row['Birth_date'] ?>">
                             
-                            <td><button class="btn btn-primary text-light" data-bs-toggle="modal" data-bs-target="#pateintModal" onclick="getData(<?= $row['id'] ?>)" id="<?= $row['id'] ?>"><img src="../assets/img/icons/view-iceblue.svg" alt=""> View </button></td>
+                            <td><button class="btn bg-info fw-bold rounded bg-opacity-25" data-bs-toggle="modal" data-bs-target="#pateintModal" onclick="getData(<?= $row['id'] ?>)" id="<?= $row['id'] ?>" style="color: #03639f;"><img src="../assets/img/icons/view-iceblue.svg" alt=""> View </button></td>
                             <input id="viewBtn-<?= $row['id'] ?>" type="hidden" value="<?= $row['id'] ?>">
                             
                         </tr>
-
-
                             <?php
                         }
                     }                    

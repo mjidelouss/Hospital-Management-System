@@ -1,5 +1,4 @@
 <?php
-require_once('../includes/autoloader.php');
 
 
 class User extends DbConnection
@@ -14,36 +13,35 @@ class User extends DbConnection
     public function __construct() {
       $this->db = new DbConnection;
     }
-
-
+    
     public function login($email, $password)
     {
-
-
-
-
             if (!empty($email) && !empty($password)) {
 
-                $query = $this->pdo->prepare("SELECT * FROM `role` WHERE email = ? limit 1");
+                $query = $this->connect()->prepare("SELECT * FROM `role` WHERE email = ? limit 1");
                 $query->execute(array($email));
                 $role = $query->fetch();
 
                
             if($role){
 
-                if ($role["rol_type"] == "patient") {
-                    $query = $this->pdo->prepare("SELECT * FROM `patient` WHERE email = ? AND password = ? limit 1");
+                if ($role["role"] == "patient") {
+                    $query = $this->connect()->prepare("SELECT * FROM `patient` WHERE email = ? AND password = ? limit 1");
                     $query->execute(array($email, $password));
                     $role = $query->fetchAll();
 
                     $_SESSION['user'] = $role;
+                    echo "<pre>";
+                    // var_dump($_SESSION['user'][0]["id"]);
+                    echo "</pre>";
+                    // die();
                     $_SESSION['conn'] = 'success';
                     header('Location:Patient/dashboardPatient.php');
 
 
-                } elseif ($role["rol_type"] == "doctor") {
+                } elseif ($role["role"] == "doctor") {
 
-                    $query = $this->pdo->prepare("SELECT * FROM `doctor` WHERE email = ? AND password = ? limit 1 ");
+                    $query = $this->connect()->prepare("SELECT * FROM `doctor` WHERE email = ? AND password = ? limit 1 ");
                     $query->execute(array($email, $password));
                     $role = $query->fetchAll();
 
@@ -51,9 +49,9 @@ class User extends DbConnection
                     $_SESSION['conn'] = 'success';
                     header('Location:Doctor/dashboardDoctor.php');
 
-                } elseif ($role["rol_type"] == "admin") {
+                } elseif ($role["role"] == "admin") {
 
-                    $query = $this->pdo->prepare("SELECT * FROM `doctor` WHERE email = ? AND password = ? limit 1");
+                    $query = $this->connect()->prepare("SELECT * FROM `admin` WHERE email = ? AND password = ? limit 1");
                     $query->execute(array($email, $password));
                     $role = $query->fetchAll();
 
@@ -151,9 +149,8 @@ class User extends DbConnection
         $sql = "SELECT * FROM `$user`";
         $STH = $db->connect()->prepare($sql);
         $STH->execute();
-     $res = $STH->rowCount();
+        $res = $STH->rowCount();
 
         return $res;
-       
     }
 }

@@ -1,11 +1,10 @@
 <?php
-
+include "./includes/autoloader.php";
 session_start();
 $_SESSION['signup_error'] = " ---------------";
 echo $_SESSION['signup_error'];
 
 var_dump($_SESSION['signup_error']);
-require_once('classes/autoloader.php');
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 

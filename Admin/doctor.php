@@ -1,5 +1,6 @@
 <?php
     include "../includes/autoloader.php";
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,16 +36,16 @@
                         $email = $row['Email'];
                         echo '<h5>'.$name.'</h5>';
                         echo '<h6 class="user_email">'.$email.'</h6>';
-                        ?>
+                    ?>
                         </div>
                     </div>
                     <div class="mt-3 ms-4"><a href="../sign_in.php" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: #03639f;">Log out</a></div>
                     <hr>
                         <div class="list-group-flush ms-3 list-group">
                             <a href="dashboardAdmin.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
-                            <a href="doctor.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> Doctors</a>
+                            <a href="doctor.php" class="list-group-item bg-info bg-opacity-50 border-3 border-blue border-end"><img src="../assets/img/icons/doctors.svg" alt=""> Doctors</a>
                             <a href="Schedule.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/schedule.svg" alt=""> Schedule</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> Appointment</a>
+                            <a href="appointment.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> Appointment</a>
                             <a href="patient.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt=""> Patient</a>
                         </div>
                 </div>
@@ -85,7 +86,7 @@
             $doct = new Doctor;
             $doct->countDoctors();
             ?>
-            <div class="container">
+            <div class="ms-4 me-5">
             <div class="col table-responsive mt-3 rounded">
                         <table class="table table-bordered bg-white rounded shadow-sm table-hover">
                             <thead>
@@ -204,10 +205,7 @@
                 <div class="modal-content" style="background-color: #f1f2f3;">
                         <div class="modal-header d-flex justify-content-center" style="background-color: #f1f2f3; border: none;"></div>
                         <h1 class="text-center fw-bold">Details</h1>
-                        <div class="modal-body" style="background-color: #f1f2f3;">
-                        <h5 class="text-info fw-bold">Name :</h5>
-                        <h5 class="text-info fw-bold">Email :</h5>
-                        <h5 class="text-info fw-bold">Specialties :</h5>
+                        <div class="modal-body" id="view-body" style="background-color: #f1f2f3;">
                         </div>
                         <div class="modal-footer" style="background-color: #f1f2f3; border: none">
                             <button type="button" class="btn btn-primary border rounded" data-bs-dismiss="modal">
