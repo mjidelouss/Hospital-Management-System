@@ -28,5 +28,5 @@ class User extends DbConnection {
        
     }
     
-     
+
 }
