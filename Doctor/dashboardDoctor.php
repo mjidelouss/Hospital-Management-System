@@ -1,6 +1,20 @@
 <?php
 include "../includes/autoloader.php";
 session_start();
+
+
+    $doctor = new user();
+    $doctor = $doctor->get_all('doctor');
+
+    $appointment = new user();
+    $appointment= $appointment->get_all('appointment');
+
+    $session = new user();
+    $session = $session->get_all('session');
+
+    $patient = new user();
+    $patient = $patient->get_all('patient');
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
