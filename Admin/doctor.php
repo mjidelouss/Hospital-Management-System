@@ -1,5 +1,6 @@
 <?php
     include "../includes/autoloader.php";
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +36,7 @@
                         $email = $row['Email'];
                         echo '<h5>'.$name.'</h5>';
                         echo '<h6 class="user_email">'.$email.'</h6>';
-                        ?>
+                    ?>
                         </div>
                     </div>
                     <div class="mt-3 ms-4"><a href="../sign_in.php" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: #03639f;">Log out</a></div>
@@ -85,7 +86,7 @@
             $doct = new Doctor;
             $doct->countDoctors();
             ?>
-            <div class="container">
+            <div class="ms-4 me-5">
             <div class="col table-responsive mt-3 rounded">
                         <table class="table table-bordered bg-white rounded shadow-sm table-hover">
                             <thead>

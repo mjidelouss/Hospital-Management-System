@@ -1,5 +1,6 @@
 <?php
     include "../includes/autoloader.php";
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,14 +29,15 @@
                         <div class="ms-3 mt-2">
                         <?php
                         $db = new DbConnection;
-                        $sql = "SELECT * FROM doctor";
+                        $userid = $_SESSION['user'][0]["id"];
+                        $sql = "SELECT * FROM doctor WHERE id = $userid";
                         $stmt = $db->connect()->query($sql);
                         $row = $stmt->fetch();
                         $name = ''.$row["First_name"]." ".$row["Last_name"].'';
                         $email = $row['Email'];
                         echo '<h5>'.$name.'</h5>';
                         echo '<h6 class="user_email">'.$email.'</h6>';
-                        ?>
+                    ?>
                         </div>
                     </div>
                     <div class="mt-3 ms-4"><a href="../sign_in.php" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: #03639f;">Log out</a></div>
@@ -70,7 +72,7 @@
             $app = new Appointments;
             $app->countAppointments();
             ?>
-            <div class="container">
+            <div class="ms-4 me-4">
             <div class="mt-4 mb-4 border border-secondary rounded p-1">
             <form method="POST">
                 <div class="input-group d-flex">

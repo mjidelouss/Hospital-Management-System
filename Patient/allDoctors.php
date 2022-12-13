@@ -1,5 +1,6 @@
 <?php
     include "../includes/autoloader.php";
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +29,8 @@
                         <div class="ms-3 mt-2">
                         <?php
                         $db = new DbConnection;
-                        $sql = "SELECT * FROM patient";
+                        $userid = $_SESSION['user'][0]["id"];
+                        $sql = "SELECT * FROM patient WHERE id = $userid";
                         $stmt = $db->connect()->query($sql);
                         $row = $stmt->fetch();
                         $name = ''.$row["First_name"]." ".$row["Last_name"].'';
@@ -85,7 +87,7 @@
             $docCount = $row['COUNT(*)'];
             echo '<h5 class="fw-bold ms-4 mt-3">All Doctors ('.$docCount.')</h5>';
             ?>
-            <div class="container">
+            <div class="ms-4 me-4">
             <div class="col table-responsive mt-3 rounded">
                         <table class="table table-bordered bg-white rounded shadow-sm table-hover">
                             <thead class="">
@@ -114,10 +116,7 @@
                 <div class="modal-content">
                         <div class="modal-header d-flex justify-content-center" style="border: none;"></div>
                         <h1 class="text-center fw-bold">Details</h1>
-                        <div class="modal-body">
-                        <h5 class="text-info fw-bold">Name :</h5>
-                        <h5 class="text-info fw-bold">Email :</h5>
-                        <h5 class="text-info fw-bold">Specialties :</h5>
+                        <div class="view-body2">
                         </div>
                         <div class="modal-footer" style="border: none">
                             <button type="button" class="btn btn-primary border rounded" data-bs-dismiss="modal">

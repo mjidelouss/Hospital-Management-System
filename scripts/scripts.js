@@ -7,19 +7,52 @@ const updatePassword = document.getElementById("editPassword");
 const docId = document.getElementById("docId");
 // view model variable
 const viewModal = document.getElementById("view-body");
+const viewModal2 = document.getElementById("view-body2");
 
 // viewDoc function fills the view model
 function viewDoc(index) {
   let dataView = document.getElementById(index).getAttribute("data-info");
   let array = dataView.split(",");
   viewModal.innerHTML = `
-  <h5 class="text-info fw-bold">First Name : ${array[0]}</h5>
-  <h5 class="text-info fw-bold">Last Name : ${array[1]}</h5>
-  <h5 class="text-info fw-bold">Email : ${array[2]}</h5>
-  <h5 class="text-info fw-bold">Specialties : ${array[3]}</h5>
+  <div class="form-group">
+  <label>First Name</label>
+  <input type="text" class="form-control" disabled="disabled" id="fname" value="${array[0]}">
+  </div>
+    <div class="form-group">
+      <label>Last Name</label>
+      <input type="text" class="form-control" disabled="disabled" id="lname" value="${array[1]}">
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="text" class="form-control" disabled="disabled" id="eemail" value="${array[2]}">
+    </div>
+    <div class="form-group">
+      <label>Speciality</label>
+      <input type="text" class="form-control" disabled="disabled" id="special" value="${array[3]}">
+    </div>
   `;
 }
-
+//
+function viewDoc2(firstName, lastName, email, speciality) {
+  viewModal2.innerHTML = `
+  <div class="form-group">
+  <label>First Name</label>
+  <input type="text" class="form-control" disabled="disabled" id="fname" value="${firstName}">
+  </div>
+    <div class="form-group">
+      <label>Last Name</label>
+      <input type="text" class="form-control" disabled="disabled" id="lname" value="${lastName}">
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="text" class="form-control" disabled="disabled" id="eemail" value="${email}">
+    </div>
+    <div class="form-group">
+      <label>Speciality</label>
+      <input type="text" class="form-control" disabled="disabled" id="special" value="${speciality}">
+    </div>
+  `;
+}
 // initializeBook function fills the edit model inputs
 function initializeDoc(index) {
   let dataInfo = document.getElementById(index).getAttribute("data-info");
