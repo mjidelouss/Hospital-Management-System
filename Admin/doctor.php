@@ -1,5 +1,6 @@
 <?php
     include "../includes/autoloader.php";
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,16 +36,16 @@
                         $email = $row['Email'];
                         echo '<h5>'.$name.'</h5>';
                         echo '<h6 class="user_email">'.$email.'</h6>';
-                        ?>
+                    ?>
                         </div>
                     </div>
                     <div class="mt-3 ms-4"><a href="../sign_in.php" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: #03639f;">Log out</a></div>
                     <hr>
                         <div class="list-group-flush ms-3 list-group">
                             <a href="dashboardAdmin.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
-                            <a href="doctor.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> Doctors</a>
+                            <a href="doctor.php" class="list-group-item bg-info bg-opacity-50 border-3 border-blue border-end"><img src="../assets/img/icons/doctors.svg" alt=""> Doctors</a>
                             <a href="Schedule.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/schedule.svg" alt=""> Schedule</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> Appointment</a>
+                            <a href="appointment.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> Appointment</a>
                             <a href="patient.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt=""> Patient</a>
                         </div>
                 </div>
@@ -82,14 +83,10 @@
             </button>
             </div>
             <?php
-            $db = new DbConnection;
-            $sql = "SELECT COUNT(*) FROM doctor";
-            $stmt = $db->connect()->query($sql);
-            $row = $stmt->fetch();
-            $docCount = $row['COUNT(*)'];
-            echo '<h5 class="fw-bold ms-4 mt-3">All Doctors ('.$docCount.')</h5>';
+            $doct = new Doctor;
+            $doct->countDoctors();
             ?>
-            <div class="container">
+            <div class="ms-4 me-5">
             <div class="col table-responsive mt-3 rounded">
                         <table class="table table-bordered bg-white rounded shadow-sm table-hover">
                             <thead>
@@ -102,10 +99,18 @@
                             </thead>
                             <tbody id="doctor-table">
                             <?php
+                            if (isset($_POST['save']))
+                            {
+                                $admin = new Admin;
+                                $admin->createDoctor($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['speciality'], $_POST['pass']);
+                            }
                             $doc = new Doctor;
+                            if (isset($_POST['update']))
+                            {
+                                $doc->updateDoctor($_POST['docId'], $_POST['editFirstName'], $_POST['editLastName'], $_POST['editEmail'], $_POST['editPassword'], $_POST['editSpeciality']);
+                            }
                             if (isset($_POST['searchDoc'])) {
-                                $docSearch = $_POST['searchDoctor'];
-                                $doc->searchDoctors($docSearch);
+                                $doc->searchDoctors($_POST['searchDoctor']);
                             }
                             else
                             {
@@ -124,27 +129,23 @@
                 <div class="modal-body" style="background-color: #f1f2f3;">
                     <div class="" id="">
                         <label class="col-form-label text-black">First Name</label>
-                        <input type="text" class="form-control" id="" name="" required />
+                        <input type="text" class="form-control" id="firstName" name="firstName" required />
                 </div>
                 <div class="" id="">
                     <label class="col-form-label text-black">Last Name</label>
-                    <input type="text" class="form-control" id="" name="" required />
+                    <input type="text" class="form-control" id="lastName" name="lastName" required />
                 </div>
                 <div class="" id="">
                     <label class="col-form-label text-black">Email</label>
-                    <input type="text" class="form-control" id="" name="" required />
+                    <input type="email" class="form-control" id="email" name="email" required />
                 </div>
                 <div class="" id="">
                     <label class="col-form-label text-black">Speciality</label>
-                    <input type="text" class="form-control" id="" name="" required />
+                    <input type="text" class="form-control" id="speciality" name="speciality" required />
                 </div>
                 <div class="" id="">
                     <label class="col-form-label text-black">Password</label>
-                    <input type="password" class="form-control" id="" name="" required />
-                </div>
-                <div class="" id="">
-                    <label class="col-form-label text-black">Confirme Password</label>
-                    <input type="text" class="form-control" id="" name="" required />
+                    <input type="password" class="form-control" id="pass" name="pass" required />
                 </div>
                 </div>
                 <div class="modal-footer" style="background-color: #f1f2f3; border: none">
@@ -167,30 +168,31 @@
                 </div>
                 <div class="modal-body" style="background-color: #f1f2f3;">
                     <div class="" id="">
+                        <input type="text" id="docId" name="docId" style="display: none">
                         <label class="col-form-label text-black">First Name</label>
-                        <input type="text" class="form-control" id="" name=""/>
+                        <input type="text" class="form-control" id="editFirstName" name="editFirstName"/>
                 </div>
                 <div class="" id="">
                     <label class="col-form-label text-black">Last Name</label>
-                    <input type="text" class="form-control" id="" name=""/>
+                    <input type="text" class="form-control" id="editLastName" name="editLastName"/>
                 </div>
                 <div class="" id="">
                     <label class="col-form-label text-black">Email</label>
-                    <input type="text" class="form-control" id="" name=""/>
+                    <input type="text" class="form-control" id="editEmail" name="editEmail"/>
                 </div>
                 <div class="" id="">
                     <label class="col-form-label text-black">Speciality</label>
-                    <input type="text" class="form-control" id="" name=""/>
+                    <input type="text" class="form-control" id="editSpeciality" name="editSpeciality"/>
                 </div>
                 <div class="" id="">
                     <label class="col-form-label text-black">Password</label>
-                    <input type="password" class="form-control" id="" name="" required/>
+                    <input type="password" class="form-control" id="editPassword" name="editPassword" required/>
                 </div>
                 </div>
                 <div class="modal-footer" style="background-color: #f1f2f3; border: none">
                     <button type="button" class="btn btn-primary border rounded-pill" data-bs-dismiss="modal">Cancel
                     </button>
-                    <button type="submit" class="btn btn-success rounded-pill text-white" name="save" id="save">Update
+                    <button type="submit" class="btn btn-success rounded-pill text-white" name="update">Update
                     </button>
                 </form>
                 </div>
@@ -203,10 +205,7 @@
                 <div class="modal-content" style="background-color: #f1f2f3;">
                         <div class="modal-header d-flex justify-content-center" style="background-color: #f1f2f3; border: none;"></div>
                         <h1 class="text-center fw-bold">Details</h1>
-                        <div class="modal-body" style="background-color: #f1f2f3;">
-                        <h5 class="text-info fw-bold">Name :</h5>
-                        <h5 class="text-info fw-bold">Email :</h5>
-                        <h5 class="text-info fw-bold">Specialties :</h5>
+                        <div class="modal-body" id="view-body" style="background-color: #f1f2f3;">
                         </div>
                         <div class="modal-footer" style="background-color: #f1f2f3; border: none">
                             <button type="button" class="btn btn-primary border rounded" data-bs-dismiss="modal">

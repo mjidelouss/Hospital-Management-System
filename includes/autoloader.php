@@ -7,14 +7,10 @@
 */
 
 spl_autoload_register('myAutoLoader');
-
 function myAutoLoader($className) {
     $path = "/../classes/";
     $extension = ".class.php";
     $fullPath = $path . $className . $extension;
 
-
-
-    include __DIR__.$fullPath;
-
+    include_once __DIR__.$fullPath;
 }

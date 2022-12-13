@@ -1,4 +1,5 @@
-<!-- <?php
+ <?php
+
 session_start();
 include 'scripts.php';
 require_once('includes/autoloader.php');
@@ -6,20 +7,21 @@ require_once('includes/autoloader.php');
 
 
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
+if (isset($_POST["register"])) {
  
-  // $newpatient = new Patient();
+   $newpatient = new Patient();
 
-  echo "<pre>"."doctor  ";
-  var_dump(extract($_POST));
-  echo "</pre>";
+     extract($_POST);
 
-  $email = $_POST['email'];
-  $password = $_POST['password'];
+
+
+
+  $newpatient->sign_up($Firstname,$Lastname,$CIN,$date,$email,$mobile,$password);
+
 
 }
 
-?> -->
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,14 +58,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 									<div class="alert alert-danger alert-dismissible fade show">
 										<strong>wrong!</strong>
 										<?php 
-									echo $_SESSION['signup_error'] ; 
-									
+									echo $_SESSION['signup_error'] ;
+									unset($_SESSION['signup_error']);
 										?>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
 									</div>
 									<?php endif ?>
 
-                   <form class="mx-1 mx-md-4" action="" method="post" >
+                   <form class="mx-1 mx-md-4" action="sign_up.php" method="post" >
       
                              <!-- 2 column grid layout with text inputs for the first and last names -->
                                 <div class="row">
@@ -136,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                       <button class="btn btn-primary btn btn-block container-fluid mb-3 " type="submit"  name="register" >Register</button>
                                   
                         
-                                    <p class="text-center">Already have an account? <a href="" class="fw-bold text-black  text-decoration-none">Log in</a></p>
+                                    <p class="text-center">Already have an account? <a href="sign_in.php" class="fw-bold text-black  text-decoration-none">Log in</a></p>
 
           
                           </form>

@@ -4,7 +4,6 @@ class DbConnection {
     public $host = "localhost";
     public $user = "root";
     public $pwd = "";
-
     public $dbName = "youcodehospital";
 
     public function connect() {
@@ -17,7 +16,9 @@ class DbConnection {
          catch(PDOException $e){
              echo "Error: " . $e->getMessage();
            }
-     }
-}
+    }
 
-?>
+    public function __destruct() {
+            $this->pdo = NULL;
+    }
+}

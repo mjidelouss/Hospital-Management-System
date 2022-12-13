@@ -1,5 +1,6 @@
 <?php
     include "../includes/autoloader.php";
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +29,8 @@
                         <div class="ms-3 mt-2">
                         <?php
                         $db = new DbConnection;
-                        $sql = "SELECT * FROM patient";
+                        $userid = $_SESSION['user'][0]["id"];
+                        $sql = "SELECT * FROM patient WHERE id = $userid";
                         $stmt = $db->connect()->query($sql);
                         $row = $stmt->fetch();
                         $name = ''.$row["First_name"]." ".$row["Last_name"].'';
@@ -42,9 +44,9 @@
                     <hr>
                         <div class="list-group-flush ms-3 list-group">
                             <a href="dashboardPatient.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/home.svg" alt=""> Home</a>
-                            <a href="allDoctors.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> All Doctors</a>
+                            <a href="allDoctors.php" class="list-group-item bg-info bg-opacity-50 border-3 border-blue border-end"><img src="../assets/img/icons/doctors.svg" alt=""> All Doctors</a>
                             <a href="ScheduleSession.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/session.svg" alt=""> Scheduled Sessions</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> My Bookings</a>
+                            <a href="myBooking.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> My Bookings</a>
                             <a href="Settings.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/settings.svg" alt=""> Settings</a>
                         </div>
                 </div>
@@ -85,7 +87,7 @@
             $docCount = $row['COUNT(*)'];
             echo '<h5 class="fw-bold ms-4 mt-3">All Doctors ('.$docCount.')</h5>';
             ?>
-            <div class="container">
+            <div class="ms-4 me-4">
             <div class="col table-responsive mt-3 rounded">
                         <table class="table table-bordered bg-white rounded shadow-sm table-hover">
                             <thead class="">
@@ -100,8 +102,7 @@
                             <?php
                             $doc = new Doctor;
                             if (isset($_POST['search'])) {
-                                $docSearch = $_POST['searchDoc'];
-                                $doc->searchDoctor($docSearch);
+                                $doc->searchDoctor($_POST['searchDoc']);
                             }
                             else
                             {
@@ -115,10 +116,7 @@
                 <div class="modal-content">
                         <div class="modal-header d-flex justify-content-center" style="border: none;"></div>
                         <h1 class="text-center fw-bold">Details</h1>
-                        <div class="modal-body">
-                        <h5 class="text-info fw-bold">Name :</h5>
-                        <h5 class="text-info fw-bold">Email :</h5>
-                        <h5 class="text-info fw-bold">Specialties :</h5>
+                        <div class="view-body2">
                         </div>
                         <div class="modal-footer" style="border: none">
                             <button type="button" class="btn btn-primary border rounded" data-bs-dismiss="modal">

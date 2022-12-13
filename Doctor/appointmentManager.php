@@ -1,5 +1,6 @@
 <?php
     include "../includes/autoloader.php";
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,24 +29,25 @@
                         <div class="ms-3 mt-2">
                         <?php
                         $db = new DbConnection;
-                        $sql = "SELECT * FROM doctor";
+                        $userid = $_SESSION['user'][0]["id"];
+                        $sql = "SELECT * FROM doctor WHERE id = $userid";
                         $stmt = $db->connect()->query($sql);
                         $row = $stmt->fetch();
                         $name = ''.$row["First_name"]." ".$row["Last_name"].'';
                         $email = $row['Email'];
                         echo '<h5>'.$name.'</h5>';
                         echo '<h6 class="user_email">'.$email.'</h6>';
-                        ?>
+                    ?>
                         </div>
                     </div>
                     <div class="mt-3 ms-4"><a href="../sign_in.php" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: #03639f;">Log out</a></div>
                     <hr>
                         <div class="list-group-flush ms-3 list-group">
                             <a href="dashboardDoctor.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
-                            <a href="appointmentManager.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> My Appointments</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/session.svg" alt=""> My Sessions</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt=""> My Patients</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/settings.svg" alt=""> Settings</a>
+                            <a href="appointmentManager.php" class="list-group-item bg-info bg-opacity-50 border-3 border-blue border-end"><img src="../assets/img/icons/book.svg" alt=""> My Appointments</a>
+                            <a href="Schedule.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/session.svg" alt=""> My Sessions</a>
+                            <a href="myPatients.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt=""> My Patients</a>
+                            <a href="Settings.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/settings.svg" alt=""> Settings</a>
                         </div>
                 </div>
             <!-- Page Content -->
@@ -67,14 +69,10 @@
                </div>
             </div>
             <?php
-            $db = new DbConnection;
-            $sql = "SELECT COUNT(*) FROM appointment";
-            $stmt = $db->connect()->query($sql);
-            $row = $stmt->fetch();
-            $appointCount = $row['COUNT(*)'];
-            echo '<h5 class="fw-bold ms-4 mt-3">My Appointments ('.$appointCount.')</h5>';
+            $app = new Appointments;
+            $app->countAppointments();
             ?>
-            <div class="container">
+            <div class="ms-4 me-4">
             <div class="mt-4 mb-4 border border-secondary rounded p-1">
             <form method="POST">
                 <div class="input-group d-flex">
@@ -100,10 +98,9 @@
                             </thead>
                             <tbody id="doctor-table">
                             <?php
-                            $appoint = new appointments;
+                            $appoint = new Appointments;
                             if (isset($_POST['searchDate'])) {
-                                $appointSearch = $_POST['searchAppoint'];
-                                $appoint->searchAppointment($appointSearch);
+                                $appoint->searchAppointment($_POST['searchAppoint']);
                             }
                             else
                             {

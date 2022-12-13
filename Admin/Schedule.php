@@ -1,5 +1,6 @@
-<?php
+<?php 
 require_once('../includes/autoloader.php');
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     extract($_POST);
@@ -41,24 +42,32 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <div class="d-flex pt-3">
-                <img src="../assets/img/user.png" class="rounded-circle ms-4" width="70" alt="Image Not Found">
-                <div class="ms-3 mt-2">
-                    <h5>Admin</h5>
-                    <h6 class="user_email">admin@gmail.com</h6>
+                    <div class="d-flex pt-3">
+                        <img src="../assets/img/user.png" class="rounded-circle ms-4" width="70" alt="Image Not Found">
+                        <div class="ms-3 mt-2">
+                        <?php
+                        $db = new DbConnection;
+                        $sql = "SELECT * FROM admin";
+                        $stmt = $db->connect()->query($sql);
+                        $row = $stmt->fetch();
+                        $name = ''.$row["First_name"]." ".$row["Last_name"].'';
+                        $email = $row['Email'];
+                        echo '<h5>'.$name.'</h5>';
+                        echo '<h6 class="user_email">'.$email.'</h6>';
+                    ?>
+                        </div>
+                    </div>
+                    <div class="mt-3 ms-4"><a href="../sign_in.php" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: #03639f;">Log out</a></div>
+                    <hr>
+                        <div class="list-group-flush ms-3 list-group">
+                            <a href="dashboardAdmin.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
+                            <a href="doctor.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> Doctors</a>
+                            <a href="Schedule.php" class="list-group-item bg-info bg-opacity-50 border-3 border-blue border-end"><img src="../assets/img/icons/schedule.svg" alt=""> Schedule</a>
+                            <a href="appointment.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> Appointment</a>
+                            <a href="patient.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt=""> Patient</a>
+                        </div>
                 </div>
-            </div>
-            <div class="mt-3 ms-4"><a href="#" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: rgb(73, 166, 243);">log out</a></div>
-            <hr>
-            <div class="list-group-flush ms-3 list-group">
-                <a href="dashboardAdmin.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
-                <a href="doctor.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> Doctors</a>
-                <a href="Schedule.php" class="list-group-item bg-transparent text-blue-500 border-3 border-blue border-end "><img src="../assets/img/icons/schedule-hover.svg" alt=""> Schedule</a>
-                <a href="appointment.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> Appointment</a>
-                <a href="patient.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt=""> Patient</a>
-            </div>
-        </div>
-        <!-- Page Content -->
+            <!-- Page Content -->
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg bg-transparent py-4 px-4 d-flex justify-content-between">
                 <div class=" d-flex ">
@@ -81,6 +90,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <p class=" col m-0 fs-6 fw-600"> Today'y Date</p>
                         <p class=" col m-0 fs-5 fw-800 "> 2022-11-01</p>
 
+
+                </div> 
+                <div class=" p-1 ms-1 fs-4 fw-800  me-auto" >
+                        
+                      <p class="my-0">Shedule Manager</p>  
+                        
                     </div>
                     <div class=" p-2 bg-light-600 rounded-1 ms-2 ">
 
