@@ -30,11 +30,11 @@
                     <div class="mt-3 ms-4"><a href="#" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: rgb(73, 166, 243);">log out</a></div>
                     <hr>
                         <div class="list-group-flush ms-3 list-group">
-                            <a href="admin.html" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt="">My Appointment</a>
-                            <a href="#" class="list-group-item bg-transparent text-blue-500 border-3 border-blue border-end "><img src="../assets/img/icons/session-iceblue.svg" alt=""> My Session</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt="">My Patients</a>
-                            <a href="#" class="list-group-item bg-transparent "><img src="../assets/img/icons/settings.svg" alt=""> Settings</a>
+                            <a href="dashboardDoctor.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
+                            <a href="appointmentManager.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt="">My Appointment</a>
+                            <a href="Schedule.php" class="list-group-item bg-info bg-opacity-50 border-3 border-blue border-end"><img src="../assets/img/icons/session.svg" alt=""> My Session</a>
+                            <a href="myPatients.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt="">My Patients</a>
+                            <a href="Settings.php" class="list-group-item bg-transparent "><img src="../assets/img/icons/settings.svg" alt=""> Settings</a>
                         </div>
                 </div>
             <!-- Page Content -->
@@ -46,13 +46,9 @@
                         <i class="fas fa-bars primary-text fs-4 me-3" style="color: black; cursor: pointer;"
                             id="controlPanel" onclick="wrapside()"></i>
                     </div>
-                    <div class=" row bg-blue-100  rounded-1  p-2" >
-                        <img src="../assets/icon/back-iceblue.svg" alt="" class="  col">
-                        <p class=" col align-items-center m-0 fw-800 fs-5 text-blue "> Back</p>
-    
-                    </div>
+
                  </div> 
-                <div class=" p-1 ms-4 fs-4 fw-800  me-auto" >
+                <div class=" p-1 ms-1 fs-4 fw-800  me-auto" >
                         
                       <p class="my-0">My Sessions</p>  
                         

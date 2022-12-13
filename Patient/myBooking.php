@@ -29,16 +29,14 @@
                             <h6 class="user_email">patient@gmail.com</h6>
                         </div>
                     </div>
-                    <div class="mt-3 ms-4">
-                        <a href="#" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: rgb(73, 166, 243);">log out</a>
-                    </div>
+                    <div class="mt-3 ms-4"><a href="../sign_in.php" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: #03639f;">Log out</a></div>
                         <hr>
                         <div class="list-group-flush ms-3 list-group">
-                            <a href="admin.html" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg" alt=""> Home</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> All Doctors</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/schedule.svg" alt=""> Scheduled Session</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> My Bookings</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt=""> Settings</a>
+                            <a href="dashboardPatient.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/home.svg" alt=""> Home</a>
+                            <a href="allDoctors.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> All Doctors</a>
+                            <a href="ScheduleSession.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/session.svg" alt=""> Scheduled Session</a>
+                            <a href="myBooking.php" class="list-group-item bg-info bg-opacity-50 border-3 border-blue border-end"><img src="../assets/img/icons/book.svg" alt=""> My Bookings</a>
+                            <a href="Settings.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/Settings.svg" alt=""> Settings</a>
                         </div>
     </div>
             <!-- Page Content -->

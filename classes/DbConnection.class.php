@@ -16,7 +16,8 @@ class DbConnection {
          catch(PDOException $e){
              echo "Error: " . $e->getMessage();
            }
-     }
+    }
+
     public function __destruct() {
             $this->pdo = NULL;
     }

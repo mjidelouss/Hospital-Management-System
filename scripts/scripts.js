@@ -5,6 +5,20 @@ const updateEmail = document.getElementById("editEmail");
 const updateSpeciality = document.getElementById("editSpeciality");
 const updatePassword = document.getElementById("editPassword");
 const docId = document.getElementById("docId");
+// view model variable
+const viewModal = document.getElementById("view-body");
+
+// viewDoc function fills the view model
+function viewDoc(index) {
+  let dataView = document.getElementById(index).getAttribute("data-info");
+  let array = dataView.split(",");
+  viewModal.innerHTML = `
+  <h5 class="text-info fw-bold">First Name : ${array[0]}</h5>
+  <h5 class="text-info fw-bold">Last Name : ${array[1]}</h5>
+  <h5 class="text-info fw-bold">Email : ${array[2]}</h5>
+  <h5 class="text-info fw-bold">Specialties : ${array[3]}</h5>
+  `;
+}
 
 // initializeBook function fills the edit model inputs
 function initializeDoc(index) {
@@ -23,15 +37,10 @@ function wrapside() {
     side.classList.toggle("toggled");
 }
 
-
 // // -----------------------------------------------
 // // function to display patient data to admin
 
-
-
-function getData (id) {
-
-            
+function getData (id) {           
             var fname_moodle = document.getElementById('fname_moodle');
             var lname_moodle = document.getElementById('lname_moodle');
             var cin_moodle = document.getElementById('cin_moodle');
@@ -59,9 +68,5 @@ function getData (id) {
         cin_moodle.value = document.getElementById(`cin-${id}`).value;
         phoneNumber_moodle.value = document.getElementById(`phoneNumber-${id}`).value;
         email_moodle.value = document.getElementById(`email-${id}`).value;
-        birthday_moodle.value = document.getElementById(`birthday-${id}`).value;
-       
-    
+        birthday_moodle.value = document.getElementById(`birthday-${id}`).value; 
 }
-
-// // -----------------------------------------------

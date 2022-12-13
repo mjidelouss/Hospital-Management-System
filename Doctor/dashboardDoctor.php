@@ -34,17 +34,11 @@
             </div>
             <hr>
             <div class="list-group-flush ms-3 list-group">
-                <a href="dashboardDoctor.php" class="list-group-item bg-transparent"><img
-                        src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
-                <a href="appointmentManager.php" class="list-group-item bg-transparent"><img
-                        src="../assets/img/icons/book.svg" alt=""> My
-                    appointment</a>
-                <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/session.svg" alt=""> My
-                    sessions</a>
-                <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt="">
-                    My Patients</a>
-                <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/settings.svg" alt="">
-                    Settings</a>
+                <a href="dashboardDoctor.php" class="list-group-item bg-info bg-opacity-50 border-3 border-blue border-end"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
+                <a href="appointmentManager.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> My appointment</a>
+                <a href="Schedule.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/session.svg" alt=""> My sessions</a>
+                <a href="myPatients.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt=""> My Patients</a>
+                <a href="Settings.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/settings.svg" alt=""> Settings</a>
             </div>
         </div>
         <!-- Page Content -->

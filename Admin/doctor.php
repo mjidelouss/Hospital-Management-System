@@ -42,9 +42,9 @@
                     <hr>
                         <div class="list-group-flush ms-3 list-group">
                             <a href="dashboardAdmin.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
-                            <a href="doctor.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> Doctors</a>
+                            <a href="doctor.php" class="list-group-item bg-info bg-opacity-50 border-3 border-blue border-end"><img src="../assets/img/icons/doctors.svg" alt=""> Doctors</a>
                             <a href="Schedule.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/schedule.svg" alt=""> Schedule</a>
-                            <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> Appointment</a>
+                            <a href="appointment.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> Appointment</a>
                             <a href="patient.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt=""> Patient</a>
                         </div>
                 </div>
@@ -204,10 +204,7 @@
                 <div class="modal-content" style="background-color: #f1f2f3;">
                         <div class="modal-header d-flex justify-content-center" style="background-color: #f1f2f3; border: none;"></div>
                         <h1 class="text-center fw-bold">Details</h1>
-                        <div class="modal-body" style="background-color: #f1f2f3;">
-                        <h5 class="text-info fw-bold">Name :</h5>
-                        <h5 class="text-info fw-bold">Email :</h5>
-                        <h5 class="text-info fw-bold">Specialties :</h5>
+                        <div class="modal-body" id="view-body" style="background-color: #f1f2f3;">
                         </div>
                         <div class="modal-footer" style="background-color: #f1f2f3; border: none">
                             <button type="button" class="btn btn-primary border rounded" data-bs-dismiss="modal">

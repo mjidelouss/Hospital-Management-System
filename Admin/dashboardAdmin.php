@@ -45,21 +45,14 @@
                     <h6 class="user_email text-muted">admin@gmail.com</h6>
                 </div>
             </div>
-            <div class="mt-3 d-flex justify-content-center"><a href="#"
-                    class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: rgb(73, 166, 243);">log out</a>
-            </div>
+            <div class="mt-3 ms-4"><a href="../sign_in.php" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: #03639f;">Log out</a></div>
             <hr>
             <div class="list-group-flush ms-3 list-group">
-                <a href="admin.html" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg"
-                        alt=""> Dashboard</a>
-                <a href="doctor.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt="">
-                    Doctors</a>
-                <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/schedule.svg" alt="">
-                    Schedule</a>
-                <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt="">
-                    Appointment</a>
-                <a href="#" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt="">
-                    Patient</a>
+                <a href="dashboardAdmin.php" class="list-group-item bg-info bg-opacity-50 border-3 border-blue border-end"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
+                <a href="doctor.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> Doctors</a>
+                <a href="Schedule.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/schedule.svg" alt=""> Schedule</a>
+                <a href="appointment.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> Appointment</a>
+                <a href="patient.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt=""> Patient</a>
             </div>
         </div>
         <!-- Page Content -->
