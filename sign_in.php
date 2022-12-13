@@ -1,15 +1,13 @@
-<?php
-include "./includes/autoloader.php";
-session_start();
-echo $_SESSION['signup_error'];
-
-var_dump($_SESSION['signup_error']);
+ <?php
+ require_once('includes/autoloader.php');
+ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $newuser = new User();
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $newuser->login($email, $password);
+    $email      = $_POST['email'];
+	$password   = $_POST['password'];
+    
+  $newuser->login($email,$password);
 }
 
 
@@ -51,29 +49,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                                 <form method="post" action="sign_in.php" data-parsley-validate>
 
-                                    <!-- To show errors is user put wrong data -->
-                                    <?php if (isset($_SESSION['login_error'])): ?>
-                                        <div class="alert alert-danger alert-dismissible fade show">
-                                            <strong>wrong!</strong>
-                                            <?php
-                                            echo $_SESSION['login_error'];
-                                            unset($_SESSION['login_error']);
-
-                                            ?>
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                                        </div>
-                                    <?php endif ?>
-                                    <!-- To show errors is user put wrong data -->
-                                    <?php if (isset($_SESSION['signup_result'])): ?>
-                                        <div class="alert alert-success alert-dismissible fade show">
-                                            <strong>succes!</strong>
-                                            <?php
-                                            echo $_SESSION['signup_result'];
-                                                unset($_SESSION['signup_result']);
-                                            ?>
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                                        </div>
-                                    <?php endif ?>
+                <!-- To show errors is user put wrong data -->
+                <?php if(isset($_SESSION['login_error'])): ?>
+									<div class="alert alert-danger alert-dismissible fade show">
+										<strong>wrong!</strong>
+										<?php 
+									echo $_SESSION['login_error'] ; 
+									unset($_SESSION['login_error'] );
+										?>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+									</div>
+									<?php endif ?>
 
                                     <div class=" mb-4">
                                         <i class="fa fa-address-card fa me-2 fa-fw pt-4"></i>
