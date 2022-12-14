@@ -1,7 +1,6 @@
  <?php
-
-session_start();
 require_once('includes/autoloader.php');
+session_start();
 
 if (isset($_POST["register"])) {
  
