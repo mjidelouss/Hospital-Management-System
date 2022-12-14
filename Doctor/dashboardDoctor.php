@@ -43,7 +43,7 @@ session_start();
             <div class="d-flex pt-3">
                 <img src="../assets/img/user.png" class="rounded-circle ms-4" width="70" alt="Image Not Found">
                 <div class="ms-3 mt-2">
-                <?php
+                    <?php
                         $db = new DbConnection;
                         $userid = $_SESSION['user'][0]["id"];
                         $sql = "SELECT * FROM doctor WHERE id = $userid";
@@ -56,14 +56,21 @@ session_start();
                     ?>
                 </div>
             </div>
-            <div class="mt-3 ms-4"><a href="../sign_in.php" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: #03639f;">Log out</a></div>
+            <div class="mt-3 ms-4"><a href="../sign_in.php" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold"
+                    style="color: #03639f;">Log out</a></div>
             <hr>
             <div class="list-group-flush ms-3 list-group">
-                <a href="dashboardDoctor.php" class="list-group-item bg-info bg-opacity-50 border-3 border-blue border-end"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
-                <a href="appointmentManager.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> My appointment</a>
-                <a href="Schedule.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/session.svg" alt=""> My sessions</a>
-                <a href="myPatients.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt=""> My Patients</a>
-                <a href="Settings.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/settings.svg" alt=""> Settings</a>
+                <a href="dashboardDoctor.php"
+                    class="list-group-item bg-info bg-opacity-50 border-3 border-blue border-end"><img
+                        src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
+                <a href="appointmentManager.php" class="list-group-item bg-transparent"><img
+                        src="../assets/img/icons/book.svg" alt=""> My appointment</a>
+                <a href="Schedule.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/session.svg"
+                        alt=""> My sessions</a>
+                <a href="myPatients.php" class="list-group-item bg-transparent"><img
+                        src="../assets/img/icons/patients.svg" alt=""> My Patients</a>
+                <a href="Settings.php" class="list-group-item bg-transparent"><img
+                        src="../assets/img/icons/settings.svg" alt=""> Settings</a>
             </div>
         </div>
         <!-- Page Content -->
@@ -122,7 +129,7 @@ session_start();
                             <div
                                 class="p-2 container-fluid bg-light d-flex justify-content-around align-items-center rounded border border-secondary">
                                 <div>
-                                    <h5 class="fs-2 text-blue">0</h5>
+                                    <h5 class="fs-2 text-blue"><?php echo $doctor;?> </h5>
                                     <p class="fs-4 fw-bold">All Doctors</p>
                                 </div>
                                 <img class="bg-secondary rounded p-3 bg-opacity-10"
@@ -131,7 +138,7 @@ session_start();
                             <div
                                 class="p-2 container-fluid bg-light d-flex justify-content-around align-items-center rounded border border-secondary">
                                 <div>
-                                    <h5 class="fs-2 text-blue">0</h5>
+                                    <h5 class="fs-2 text-blue"><?php echo $patient;?></h5>
                                     <p class="fs-4 fw-bold">All Patients</p>
                                 </div>
                                 <img class="bg-secondary rounded p-3 bg-opacity-10"
@@ -140,7 +147,7 @@ session_start();
                             <div
                                 class="p-2 container-fluid bg-light d-flex justify-content-around align-items-center rounded border border-secondary">
                                 <div>
-                                    <h5 class="fs-2 text-blue">0</h5>
+                                    <h5 class="fs-2 text-blue"><?php echo $appointment;?></h5>
                                     <p class="fs-4 fw-bold">New Booking</p>
                                 </div>
                                 <img class="bg-secondary rounded p-3 bg-opacity-10"
@@ -149,7 +156,7 @@ session_start();
                             <div
                                 class="p-2 container-fluid bg-light d-flex justify-content-around align-items-center rounded border border-secondary">
                                 <div>
-                                    <h5 class="fs-2 text-blue">0</h5>
+                                    <h5 class="fs-2 text-blue"><?php echo $session;?></h5>
                                     <p class="fs-4 fw-bold">Today Sessions</p>
                                 </div>
                                 <img class="bg-secondary rounded p-3 bg-opacity-10"
@@ -178,13 +185,7 @@ session_start();
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td></td>
 
-                                    <td></td>
-
-                                    <td></td>
-                                </tr>
 
 
                             </tbody>
@@ -198,8 +199,9 @@ session_start();
 
                     </center>
             </div>
-           
-            <button class="btn btn-primary container-fluid"><a class=" non-style-link text-white " href="schedule.php"> Show all Sessions </a></button>
+
+            <button class="btn btn-primary container-fluid"><a class=" non-style-link text-white " href="schedule.php">
+                    Show all Sessions </a></button>
 
 
             </section>

@@ -54,14 +54,21 @@
                     ?>
                 </div>
             </div>
-            <div class="mt-3 ms-4"><a href="../sign_in.php" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold" style="color: #03639f;">Log out</a></div>
+            <div class="mt-3 ms-4"><a href="../sign_in.php" class="btn bg-info px-5 bg-opacity-25 w-75 fw-bold"
+                    style="color: #03639f;">Log out</a></div>
             <hr>
             <div class="list-group-flush ms-3 list-group">
-                <a href="dashboardAdmin.php" class="list-group-item bg-info bg-opacity-50 border-3 border-blue border-end"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
-                <a href="doctor.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> Doctors</a>
-                <a href="Schedule.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/schedule.svg" alt=""> Schedule</a>
-                <a href="appointment.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg" alt=""> Appointment</a>
-                <a href="patient.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt=""> Patient</a>
+                <a href="dashboardAdmin.php"
+                    class="list-group-item bg-info bg-opacity-50 border-3 border-blue border-end"><img
+                        src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
+                <a href="doctor.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg"
+                        alt=""> Doctors</a>
+                <a href="Schedule.php" class="list-group-item bg-transparent"><img
+                        src="../assets/img/icons/schedule.svg" alt=""> Schedule</a>
+                <a href="appointment.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/book.svg"
+                        alt=""> Appointment</a>
+                <a href="patient.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg"
+                        alt=""> Patient</a>
             </div>
         </div>
         <!-- Page Content -->
@@ -103,7 +110,7 @@
                     </div>
                 </div>
 
-                
+
 
 
             </div>
@@ -183,14 +190,40 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            <?php
+
+$patient = new DbConnection();
+
+$query = "SELECT * FROM `session`";
+// $query="SELECT appointment.Appointment_number, session.Session_title, session.Scheduled_date, FROM appointment, session WHERE session.id = appointment.Session_id ";
+$statement = $patient->connect()->prepare($query);
+$statement -> execute();
+
+$result = $statement->fetchAll();
+if ($result) {
+    foreach ($result as $row) {
+        ?>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                             
+
+
+                                <td class="py-4"><?= $row['Session_title'] ?></td>
+                                <input type="hidden" id="" value="">
+
+                                <td class="py-4"> </td>
+                                <input type="hidden" id="" value="">
+
+                                <td><?= $row['Scheduled_date'] ?></td>
+                                <input id="" type="hidden" value="">
+
                             </tr>
-                          
-                            
+                            <?php
+    }
+}                    
+?>
+
+
+
                             </tbody>
                     </div>
                     </table>
@@ -225,21 +258,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td></td>
-
-                                <td></td>
-
-                                <td></td>
-                            </tr>
+                        <tr>
+                                   
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+  
                         </tbody>
                 </div>
                 </table>
                 <center>
-                        <img src="../assets/img/notfound.svg" width="25%">
-                        <br>
-                        <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">We
-                            couldnt find anything related to your keywords !</p>
+                    <img src="../assets/img/notfound.svg" width="25%">
+                    <br>
+                    <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">We
+                        couldnt find anything related to your keywords !</p>
 
                 </center>
         </div>
@@ -248,7 +281,7 @@
         </section>
 
     </div>
-    
+
 
 
     </div>
