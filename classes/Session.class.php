@@ -8,15 +8,10 @@ class Session extends DbConnection
     private $sheduled_date;
     private $scheduled_time;
     private $maxNumber;
-
     private $doctor_id;
-
-
-
 
     public function __construct($title, $scheduled_date, $scheduled_time, $maxNumber,$doctor_id)
     {
-
         $this->title = $title;
         $this->sheduled_date = $scheduled_date;
         $this->scheduled_time = $scheduled_time;
@@ -36,25 +31,5 @@ class Session extends DbConnection
         $query = $this->connect()->prepare("SELECT `id`, `Session_title`, `Scheduled_date`, `Scheduled_time`, `max_number`, `Doctor_id` FROM `session`");
         $query->execute();
         $sessions = $query->fetchAll();
-        // echo "<pre>";
-        // var_dump($sessions);
-        // echo "</pre>";
-
-
-        // foreach ($sessions[0] as $key => $value) {
-        //     echo $key;
-        //     echo $value;
-        // }
-        // while ($row = $stmt->fetch()) 
-
-
-
-
     }
-      public function getSessionBy(){
-
-
-        }
-
-
 }

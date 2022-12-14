@@ -4,14 +4,6 @@ require_once('../includes/autoloader.php');
 
 class Schedule extends DbConnection
 {
-
-
-
-
-
-    public function __construct(){ }
-
-
     public function get_All_Session()
     {
 
@@ -21,13 +13,5 @@ class Schedule extends DbConnection
      
         return $result;
     }
-
-
-
 }
-
-
-
-
-
 ?>

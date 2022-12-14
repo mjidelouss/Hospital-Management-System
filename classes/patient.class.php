@@ -6,24 +6,7 @@ class Patient extends User {
     public $phone;
     public $db;
 
-
-public function getpasword(){
-
-}
-    public function bookSession() {
-
-    }
-    public function displayReservation() {
-        
-    }
-    // public function __construct($frstname,$lstname,$email,$password,$birth_date,$cin,$phone_number) {
-
-
-    // }
-
-    public function sign_up($Firstname,$Lastname,$CIN,$date,$email,$mobile,$password){
-
-
+    public function sign_up($Firstname,$Lastname,$CIN,$date,$email,$mobile,$password) {
         if (!empty($Firstname) && !empty($Lastname) && !empty($CIN) && !empty($date) && !empty($email) && !empty($mobile) && !empty($password)) {
             $query = $this->connect()->prepare("SELECT * FROM `role` WHERE email = ?;");
             $query->execute(array($email));
@@ -49,14 +32,6 @@ public function getpasword(){
             $_SESSION['signup_error'] = "pls fill in a valid information :( ?";
 
         }
-        
-        
-        
-
-
-        // $sql_admin = "INSERT INTO `patient`(`id`, `First_name`, `Last_name`, `Email`, `PASSWORD`, `Birth_date`, `Cin`, `Phone_number`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')";
-  
-        // $result_patient =  $this->connect()->query($sql_patient);
  
     }
 }

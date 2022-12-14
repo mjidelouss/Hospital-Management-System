@@ -7,25 +7,4 @@ class Admin  extends User{
       $sql = "INSERT INTO doctor (First_name, Last_name, Email, PASSWORD, Speciality) values ('$firstName', '$lastName', '$email', '$password', '$speciality')";
       $stmt = $this->db->connect()->query($sql);
     }
-    public function deleteDoctor() {
-        
-    }
-    public function updateDoctor() {
-        
-    }
-    public function displaySession() {
-        
-    }
-    public function createSession() {
-        
-    }
-    public function updateSession() {
-        
-    }
-    public function deleteSession() {
-        
-    }
-    public function displayPatientDetails() {
-        
-    }
 }
