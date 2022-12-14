@@ -3,20 +3,13 @@
 session_start();
 require_once('includes/autoloader.php');
 
-
-
-
 if (isset($_POST["register"])) {
  
    $newpatient = new Patient();
 
      extract($_POST);
 
-
-
-
   $newpatient->sign_up($Firstname,$Lastname,$CIN,$date,$email,$mobile,$password);
-
 
 }
 
