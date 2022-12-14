@@ -3,15 +3,11 @@
  session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-
     $newuser = new User();
-
     $email      = $_POST['email'];
 	$password   = $_POST['password'];
-  
+    
   $newuser->login($email,$password);
-
-
 }
 
 
