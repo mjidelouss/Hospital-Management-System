@@ -57,97 +57,34 @@ session_start();
                         <i class="fas fa-bars primary-text fs-4 me-3" style="color: black; cursor: pointer;"
                             id="controlPanel" onclick="wrapside()"></i>
                     </div>
-    
-                   
-                    
                 </div> 
-                <div class=" p-1 ms-4 fs-4 fw-800  me-auto d-flex justify-content-between w-50" >
-                        
-                      <input type="text" placeholder="Search Patient name or Email" class="w-75 border border-info rounded p-1 form-control">  
-                      <button class="btn btn-primary">Search</button>
+                <div class="p-1 ms-4 fs-4 fw-800  me-auto d-flex justify-content-between w-50" >
+                <form action="patient.php" method="POST" class="d-flex justify-content-between w-75" >
+                    <input type="text" name="searchInp" placeholder="Search Patient name or Email" class="w-75 border border-info rounded p-1 form-control"> 
+                    <button class="btn btn-primary" type="submit" name="searchh" onclick="">Search</button>
+                    </form>
                     </div>
-
-
                 <div class=" d-flex" >
-
                     <div class="row flex-column " dir="rtl" >
                     <p class="col m-0 fs-6 fw-600">Today's Date <br><span id="datetime" class="text-secondary"></span></p>
                 <script>
                     var dt = new Date();    
                     document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
                 </script>
-
                          </div  >
                              <div class=" p-2 bg-light-600 rounded-1 ms-2 " >
-
                                  <img src=" ../assets/icon/calendar.svg" >
-                        
                              </div>
-
                 </div>
             </nav>
-            <h5 class="fw-bold ms-4 d-inline-block py-5">All Patients ()</h5>
-            <div class="container-fluid px-4">
-                
-                <div class="border border-info rounded" style="width: 95%;">
-   <table class="text-center my-2 w-100">
-                <tr style="border-bottom: solid #1253B8;">
-                    <th class="py-3">ID</th>
-                    <th class="py-3">First Name</th>
-                    <th>Last Name</th>
-                    <th>CIN</th>
-                    <th>Telephone</th>
-                    <th>E-mail</th>
-                    <th>Date of Birth</th>
-                    <th>Events</th>
-                    
-                </tr>
-                <tbody>
-                    <?php
-
-                    $patient = new DbConnection();
-
-                    $query = "SELECT * FROM `patient`";
-                    $statement = $patient->connect()->prepare($query);
-                    $statement -> execute();
-
-                    $result = $statement->fetchAll();
-                    if ($result) {
-                        foreach ($result as $row) {
-                            ?>
-                        <tr>
-                            <td class="py-4"><?= $row['id'] ?></td>
-                            <input type="hidden" id="<?= $row['id'] ?>" value="<?= $row['id'] ?>">
-                            
-                            <td class="py-4"><?= $row['First_name'] ?></td>
-                            <input type="hidden" id="fname-<?= $row['id'] ?>" value="<?= $row['First_name'] ?>">
-                            
-                            <td><?= $row['Last_name'] ?></td>
-                            <input id="lname-<?= $row['id'] ?>" type="hidden" value="<?= $row['Last_name'] ?>">
-                            
-                            <td><?= $row['Cin'] ?></td>
-                            <input id="cin-<?= $row['id'] ?>" type="hidden" value="<?= $row['Cin'] ?>">
-                            
-                            <td><?= $row['Phone_number'] ?></td>
-                            <input id="phoneNumber-<?= $row['id'] ?>" type="hidden" value="<?= $row['Phone_number'] ?>">
-                            
-                            <td><?= $row['Email'] ?></td>
-                            <input id="email-<?= $row['id'] ?>" type="hidden" value="<?= $row['Email'] ?>">
-                            
-                            <td><?= $row['Birth_date'] ?></td>
-                            <input id="birthday-<?= $row['id'] ?>" type="hidden" value="<?= $row['Birth_date'] ?>">
-                            
-                            <td><button class="btn bg-info fw-bold rounded bg-opacity-25" data-bs-toggle="modal" data-bs-target="#pateintModal" onclick="getData(<?= $row['id'] ?>)" id="<?= $row['id'] ?>" style="color: #03639f;"><img src="../assets/img/icons/view-iceblue.svg" alt=""> View </button></td>
-                            <input id="viewBtn-<?= $row['id'] ?>" type="hidden" value="<?= $row['id'] ?>">
-                            
-                        </tr>
-                            <?php
-                        }
-                    }                    
-                    ?>
-                </tbody>
-                
-    </table> 
+   <?php 
+            $pat = new Admin();
+            if (isset($_POST['searchh'])) {
+                $pat->search_patient();
+            } else {
+                $pat->displayPatientDetails();
+            }
+            ?>      
     </div>
     
             </div>
