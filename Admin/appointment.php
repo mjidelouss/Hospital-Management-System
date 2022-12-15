@@ -45,7 +45,7 @@
                             <a href="dashboardAdmin.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/dashboard.svg" alt=""> Dashboard</a>
                             <a href="doctor.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/doctors.svg" alt=""> Doctors</a>
                             <a href="Schedule.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/schedule.svg" alt=""> Schedule</a>
-                            <a href="appointment.php" class="list-group-item bbg-info bg-opacity-50 border-3 border-blue border-end"><img src="../assets/img/icons/book.svg" alt=""> Appointment</a>
+                            <a href="appointment.php" class="list-group-item bg-info bg-opacity-50 border-3 border-blue border-end"><img src="../assets/img/icons/book.svg" alt=""> Appointment</a>
                             <a href="patient.php" class="list-group-item bg-transparent"><img src="../assets/img/icons/patients.svg" alt=""> Patient</a>
                         </div>
     </div>
@@ -74,7 +74,7 @@
                     </div>
             </div>
         </div>
-        <h5 class="fw-bold ms-4">All Appointments (3)</h5>
+        <h5 class="fw-bold ms-4">All Appointments (<?php $appointmentCounter =new Admin (); $appointmentCounter->countAppointments()?>)</h5>
         <div class="px-4 py-3">
             <div class="bg-white row border rounded">
                 <table>
@@ -115,24 +115,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">lorem</th>
-                        <td>1</td>
-                        <td>docA</td>
-                        <td>test session</td>
-                        <td>2015-04-03 18:00</td>
-                        <td>2015-04-03</td>
-                        <td><button class="btn bg-info bg-opacity-50 fw-bold" style="color: #03639f;"><img src="../assets//img/icons/delete-iceblue.svg" alt=""> Cancel</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">lorem</th>
-                        <td>1</td>
-                        <td>docA</td>
-                        <td>test session</td>
-                        <td>2015-04-03 18:00</td>
-                        <td>2015-04-03</td>
-                        <td><button class="btn bg-info bg-opacity-50 fw-bold" style="color: #03639f;"><img src="../assets//img/icons/delete-iceblue.svg" alt=""> Cancel</button></td>
-                    </tr>
+                    <?php
+                        $appoi = new Admin;
+                        if(isset($_POST["filterBtn"])){
+                            $appoi->filter();
+                        } else {
+                            $appoi->displaySession();
+                        }
+                    ?>
                     </tbody>
                 </table>
             </div>
