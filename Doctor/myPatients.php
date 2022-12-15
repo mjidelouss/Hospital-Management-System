@@ -77,7 +77,7 @@ session_start();
                     </div>
             </div>
         </div>
-        <h5 class="fw-bold ms-4">My Patients (2)</h5>
+        <h5 class="fw-bold ms-4">My Patients (<?php $patientsCounter =new Patient (); $patientsCounter->countPatients()?>)</h5>
         <div class="px-4 py-3">
             <div class="bg-white border row rounded justify-content-end">
                     <table class="">
@@ -114,22 +114,10 @@ session_start();
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">lorem</th>
-                        <td>154</td>
-                        <td>0666666666</td>
-                        <td>test@gmail.com</td>
-                        <td>2015-04-03</td>
-                        <td><button class="btn bg-info bg-opacity-50 fw-bold" style="color: #03639f;"><img src="../assets//img/icons/delete-iceblue.svg" alt=""> Cancel</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">lorem</th>
-                        <td>154</td>
-                        <td>0666666666</td>
-                        <td>test@gmail.com</td>
-                        <td>2015-04-03</td>
-                        <td><button class="btn bg-info bg-opacity-50 fw-bold" style="color: #03639f;"><img src="../assets//img/icons/delete-iceblue.svg" alt=""> Cancel</button></td>
-                    </tr>
+                    <?php
+                    $patientDetails = new Patient();
+                    $patientDetails->displayPatientDetails();
+                    ?>
                     </tbody>
                 </table>
             </div>
