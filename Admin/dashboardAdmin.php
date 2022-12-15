@@ -190,38 +190,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php
-
-$patient = new DbConnection();
-
-$query = "SELECT * FROM `session`";
-// $query="SELECT appointment.Appointment_number, session.Session_title, session.Scheduled_date, FROM appointment, session WHERE session.id = appointment.Session_id ";
-$statement = $patient->connect()->prepare($query);
-$statement -> execute();
-
-$result = $statement->fetchAll();
-if ($result) {
-    foreach ($result as $row) {
-        ?>
-                            <tr>
-                             
-
-
-                                <td class="py-4"><?= $row['Session_title'] ?></td>
-                                <input type="hidden" id="" value="">
-
-                                <td class="py-4"> </td>
-                                <input type="hidden" id="" value="">
-
-                                <td><?= $row['Scheduled_date'] ?></td>
-                                <input id="" type="hidden" value="">
-
-                            </tr>
-                            <?php
-    }
-}                    
-?>
-
+                
 
 
                             </tbody>
@@ -258,12 +227,34 @@ if ($result) {
                             </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                                   
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                        <?php
+
+$patient = new DbConnection();
+
+
+$query = "SELECT * , doctor.First_name FROM session,doctor";
+$statement = $patient->connect()->prepare($query);
+$statement -> execute();
+
+$result = $statement->fetchAll();
+if ($result) {
+    foreach ($result as $row) {
+        ?>
+                            <tr>
+                                <td class="py-4"><?= $row['Session_title'] ?></td>
+                                <input type="hidden" id="" value="">
+
+                                <td class="py-4"><?= $row['First_name'] ?></td>
+                                <input type="hidden" id="" value="">
+
+                                <td><?= $row['Scheduled_date'] ?></td>
+                                <input id="" type="hidden" value="">
+
+                            </tr>
+                            <?php
+    }
+}                    
+?>
   
                         </tbody>
                 </div>
