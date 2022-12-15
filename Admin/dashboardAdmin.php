@@ -235,8 +235,8 @@ if ($result) {
 
                     </center>
 
-            </div>
-            <button class="btn btn-primary container-fluid">Show all Appointement</button>
+                </div>
+                <button class="btn btn-primary container-fluid">Show all Appointement</button>
 
             </section>
 
@@ -291,5 +291,6 @@ if ($result) {
     </script>
     <script src="../scripts/scripts.js"></script>
     <!-- ================== END core-js ================== -->
+</body>
 
 </html>

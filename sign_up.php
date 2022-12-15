@@ -1,9 +1,7 @@
  <?php
 
 session_start();
-
-
-require_once('classes/autoloader.php');
+require_once('includes/autoloader.php');
 
 
 
@@ -62,6 +60,7 @@ if (isset($_POST["register"])) {
 									echo $_SESSION['signup_error'] ;
 									unset($_SESSION['signup_error']);
 										?>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
 									</div>
 									<?php endif ?>
