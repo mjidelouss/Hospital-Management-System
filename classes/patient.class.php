@@ -14,19 +14,14 @@ class Patient extends User {
             $result = $query->fetchAll();
 
             if ($result) {
-
-
                 $_SESSION['signup_error'] = " this email already exist  ?";
 
             } else {
                 $query = $this->connect()->prepare("INSERT INTO `role`(`role`, `email`) VALUES (?,?)");
                 $query->execute(array("patient", $email));
-
                 $query = $this->connect()->prepare(" INSERT INTO `patient`(`First_name`, `Last_name`, `Email`, `PASSWORD`, `Birth_date`, `Cin`, `Phone_number`) VALUES (?,?,?,?,?,?,?) ;");
                 $query->execute(array($Firstname, $Lastname, $email, $password, $date, $CIN, $mobile));
-
                 $_SESSION['signup_result'] = "sign up success, you can know sing in  :)";
-
                 header('Location:sign_in.php');
             }
         }else {
