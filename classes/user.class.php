@@ -12,7 +12,7 @@ class User extends DbConnection
     public function __construct() {
       $this->db = new DbConnection;
     }
-    
+    // function to log user to his intended dashboard
     public function login($email, $password)
     {
             if (!empty($email) && !empty($password)) {
@@ -52,7 +52,7 @@ class User extends DbConnection
         }
         }
     }
-
+    // function to get the count of the table
     public function get_all($user){
   
         $db = new DbConnection();

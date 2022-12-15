@@ -6,6 +6,7 @@ class Patient extends User {
     public $phone;
     public $db;
 
+    // function to sign up
     public function sign_up($Firstname,$Lastname,$CIN,$date,$email,$mobile,$password) {
         if (!empty($Firstname) && !empty($Lastname) && !empty($CIN) && !empty($date) && !empty($email) && !empty($mobile) && !empty($password)) {
             $query = $this->connect()->prepare("SELECT * FROM `role` WHERE email = ?;");
@@ -30,7 +31,6 @@ class Patient extends User {
             }
         }else {
             $_SESSION['signup_error'] = "pls fill in a valid information :( ?";
-
         }
  
     }

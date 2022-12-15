@@ -10,6 +10,7 @@ class Session extends DbConnection
     private $maxNumber;
     private $doctor_id;
 
+    // initializing the variables
     public function __construct($title, $scheduled_date, $scheduled_time, $maxNumber,$doctor_id)
     {
         $this->title = $title;
@@ -18,16 +19,14 @@ class Session extends DbConnection
         $this->maxNumber = $maxNumber;
         $this->doctor_id = $doctor_id;
     }
-
+    // function to create a session
     public function createSession(){
         $query = $this->connect()->prepare("INSERT INTO `session`(`Session_title`, `Scheduled_date`,`Scheduled_time`, `max_number`, `Doctor_id`) VALUES (?,?,?,?,?)");
         $query->execute(array($this->title,$this->sheduled_date,$this->scheduled_time,$this->maxNumber,$this->doctor_id));
-
-
     }
+    // function to display a session
     public function displaySession()
     {
-
         $query = $this->connect()->prepare("SELECT `id`, `Session_title`, `Scheduled_date`, `Scheduled_time`, `max_number`, `Doctor_id` FROM `session`");
         $query->execute();
         $sessions = $query->fetchAll();
