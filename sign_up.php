@@ -1,10 +1,6 @@
  <?php
-
-session_start();
 require_once('includes/autoloader.php');
-
-
-
+session_start();
 
 if (isset($_POST["register"])) {
  
@@ -12,11 +8,7 @@ if (isset($_POST["register"])) {
 
      extract($_POST);
 
-
-
-
   $newpatient->sign_up($Firstname,$Lastname,$CIN,$date,$email,$mobile,$password);
-
 
 }
 

@@ -7,6 +7,7 @@ class Appointments {
     public function __construct() {
       $this->db = new DbConnection;
     }
+    // function to display appointments
     public function displayAppointment() {
         $sql = "SELECT appointment.Appointment_number, appointment.Appointment_date, session.Session_title, session.Scheduled_date, patient.First_name, patient.Last_name FROM appointment, patient, session WHERE session.id = appointment.Session_id AND patient.id = appointment.Patient_id";
         $stmt = $this->db->connect()->query($sql);

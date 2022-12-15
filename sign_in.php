@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                     continue </p>
 
 
-                                <form method="post" action="sign_in.php" data-parsley-validate>
+                                <form method="post" action="sign_in.php">
 
                 <!-- To show errors is user put wrong data -->
                 <?php if(isset($_SESSION['login_error'])): ?>

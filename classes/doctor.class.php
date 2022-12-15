@@ -4,6 +4,7 @@ require_once('../includes/autoloader.php');
 class Doctor extends User{
     public $speciality;
 
+    // function to count the number of doctors
     public function countDoctors() {
       $sql = "SELECT COUNT(*) FROM doctor";
       $stmt = $this->db->connect()->query($sql);
@@ -12,6 +13,7 @@ class Doctor extends User{
       echo '<h5 class="fw-bold ms-4 mt-3">All Doctors ('.$docCount.')</h5>';
     }
 
+    // function to search for a doctor by admin
     public function searchDoctors($doc) {
       if (isset($_POST['remove'])) {
         $this->removeDoctor($_POST['remove']);
@@ -43,7 +45,7 @@ class Doctor extends User{
         ';
       }
     }
-
+    // function to display doctor by admin
     public function displayDoctor() {
       if (isset($_POST['remove'])) {
         $this->removeDoctor($_POST['remove']);
@@ -75,17 +77,17 @@ class Doctor extends User{
         ';
       }
     }
-
+    // function to remove a doctor
     public function removeDoctor($id) {
       $sql = "DELETE FROM doctor WHERE id = '$id'";
       $stmt = $this->db->connect()->query($sql);
     }
-
+    // function to update a doctor
     public function updateDoctor($id, $firstName, $lastName, $email, $password, $speciality) {
       $sql = "UPDATE doctor SET id = '$id', First_name = '$firstName', Last_name = '$lastName', Email = '$email', PASSWORD = '$password', Speciality = '$speciality' WHERE id = '$id'";
       $stmt = $this->db->connect()->query($sql);
     }
-
+    // function to search for a doctor by patient
     public function searchDoctor($doc) {
       $sql="SELECT * FROM doctor WHERE First_name LIKE '%$doc%' OR email LIKE '%$doc%'";
       $stmt = $this->db->connect()->query($sql);
@@ -108,7 +110,7 @@ class Doctor extends User{
         ';
       }
     }
-
+    // function to display doctors by patient
     public function displayDoctors() {
       $sql = "SELECT * FROM doctor";
       $stmt = $this->db->connect()->query($sql);
